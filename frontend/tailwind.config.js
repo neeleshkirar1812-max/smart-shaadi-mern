@@ -7,6 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
+        wmg: {
+          pink: '#e72e77',
+          pinkHover: '#d11f67',
+          pinkLight: '#fdf2f6',
+          pinkTag: '#f94488',
+          charcoal: '#4a4a4a',
+          heading: '#2c2c2c',
+          subtext: '#727272',
+          bgLight: '#f8f8f8',
+          border: '#e4e4e4',
+          gold: '#e0a944',
+          darkFooter: '#232323',
+          green: '#28a745'
+        },
         stitch: {
           surface: "#FCF9F8",
           ivory: "#FAF8F6",

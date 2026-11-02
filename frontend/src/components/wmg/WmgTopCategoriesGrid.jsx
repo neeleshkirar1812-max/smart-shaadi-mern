@@ -1,128 +1,156 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
-
-export const WMG_6_CATEGORIES = [
-  {
-    id: 'Venue',
-    title: 'Venues',
-    count: '14,200+ Banquets & Palaces',
-    badge: '14,200+',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80',
-    description: '4-Star & 5-Star Hotels, Banquet Halls, Lawns & Heritage Palaces'
-  },
-  {
-    id: 'Photographer',
-    title: 'Photographers',
-    count: '8,150+ Cinematic & Candid',
-    badge: '8,150+',
-    image: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=700&q=80',
-    description: 'Candid wedding photography, cinematic video & pre-wedding shoots'
-  },
-  {
-    id: 'Makeup Artist',
-    title: 'Makeup',
-    count: '9,300+ Bridal Airbrush & HD',
-    badge: '9,300+',
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=700&q=80',
-    description: 'Bridal makeup, airbrush techniques, family makeup & hair styling'
-  },
-  {
-    id: 'Planning & Decor',
-    title: 'Planning & Decor',
-    count: '3,800+ Theme Designers',
-    badge: '3,800+',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80',
-    description: 'Turnkey coordinators, mandap floral setups & illumination designers'
-  },
-  {
-    id: 'Virtual Planning',
-    title: 'Virtual Planning',
-    count: 'WMG Virtual Assistant',
-    badge: 'FREE',
-    image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=700&q=80',
-    description: 'Expert online advisors to negotiate prices, verify dates & plan logistics'
-  },
-  {
-    id: 'Mehndi Artist',
-    title: 'Mehndi Artists',
-    count: '4,100+ Traditional & Arabic',
-    badge: '4,100+',
-    image: 'https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=700&q=80',
-    description: 'Traditional Marwari, Arabic, organic henna & customized bridal portrait art'
-  }
-];
 
 export default function WmgTopCategoriesGrid({ onSelectCategory }) {
   return (
-    <section id="top-categories" className="py-14 bg-white font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header with View All */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+    <section className="py-12 bg-white font-sans" id="vendors">
+      <div className="wmg-container">
+        <div className="flex items-center justify-between mb-8">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#E72E77] mb-1">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>Wedding Categories</span>
-            </div>
-            <h2 className="font-serif text-3xl font-bold text-[#1A1715]">
-              Explore Wedding Categories
-            </h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#2c2c2c]">Wedding Categories</h2>
+            <p className="text-[14px] text-[#777] mt-1">Explore over 50,000+ verified wedding partners across India</p>
           </div>
-
-          <button
-            onClick={() => onSelectCategory('All vendors')}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#E72E77] hover:text-[#B60056] group"
+          <button 
+            onClick={() => onSelectCategory?.('all')}
+            className="text-[#e72e77] font-bold text-[14px] hover:underline flex items-center space-x-1"
           >
-            <span>View All Categories</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <span>View all Categories</span>
+            <span className="material-symbols-outlined text-[18px]">chevron_right</span>
           </button>
         </div>
 
-        {/* 6 Category Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {WMG_6_CATEGORIES.map((cat) => (
-            <div
-              key={cat.id}
-              onClick={() => onSelectCategory(cat.id === 'Planning & Decor' ? 'Decorator' : cat.id === 'Makeup' ? 'Makeup Artist' : cat.id === 'Venues' ? 'Venue' : cat.id)}
-              className="group cursor-pointer rounded-3xl overflow-hidden bg-[#FAF8F5] border border-gray-100 hover:border-[#E8D8A6] shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col"
-            >
-              <div className="relative h-52 overflow-hidden">
-                <img
-                  src={cat.image}
-                  alt={cat.title}
-                  className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
-                {/* Count / Free Badge */}
-                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-bold text-[#1A1715] shadow-xs">
-                  {cat.badge}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Venues */}
+          <div 
+            onClick={() => onSelectCategory?.('Venue')}
+            className="border border-[#e4e4e4] rounded-xl p-5 hover:shadow-wmg transition bg-white group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-[#e72e77]">
+                  <span className="material-symbols-outlined text-[22px]">villa</span>
                 </div>
-
-                <div className="absolute bottom-3 left-4 right-4 text-white">
-                  <h3 className="font-serif text-xl font-bold group-hover:text-[#FFE088] transition-colors">
-                    {cat.title}
-                  </h3>
-                  <p className="text-xs text-gray-200 mt-0.5">
-                    {cat.count}
-                  </p>
-                </div>
+                <h3 className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e72e77] transition">Venues</h3>
               </div>
-
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <p className="text-xs text-gray-500 line-clamp-2">
-                  {cat.description}
-                </p>
-
-                <div className="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#E72E77] group-hover:text-[#B60056]">
-                  <span>Explore Vendors</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                </div>
-              </div>
+              <span className="text-[12px] font-bold text-[#888]">14,200+</span>
             </div>
-          ))}
-        </div>
+            <div className="flex flex-wrap gap-1.5 text-[12px] text-[#666]">
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Banquet Halls</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Marriage Garden / Lawns</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Wedding Resorts</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Destination Venues</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">4 &amp; 5 Star Hotels</span>
+            </div>
+          </div>
 
+          {/* Photographers */}
+          <div 
+            onClick={() => onSelectCategory?.('Photographer')}
+            className="border border-[#e4e4e4] rounded-xl p-5 hover:shadow-wmg transition bg-white group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-[#e72e77]">
+                  <span className="material-symbols-outlined text-[22px]">photo_camera</span>
+                </div>
+                <h3 className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e72e77] transition">Photographers</h3>
+              </div>
+              <span className="text-[12px] font-bold text-[#888]">8,150+</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 text-[12px] text-[#666]">
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Candid Wedding Photography</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Cinematographers</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Pre Wedding Shoot</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Traditional Photography</span>
+            </div>
+          </div>
+
+          {/* Makeup */}
+          <div 
+            onClick={() => onSelectCategory?.('Makeup Artist')}
+            className="border border-[#e4e4e4] rounded-xl p-5 hover:shadow-wmg transition bg-white group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-[#e72e77]">
+                  <span className="material-symbols-outlined text-[22px]">face_retouching_natural</span>
+                </div>
+                <h3 className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e72e77] transition">Makeup</h3>
+              </div>
+              <span className="text-[12px] font-bold text-[#888]">9,300+</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 text-[12px] text-[#666]">
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Bridal Makeup Artists</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Airbrush HD Makeup</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Family Makeup (WMG)</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Hairstylists</span>
+            </div>
+          </div>
+
+          {/* Planning & Decor */}
+          <div 
+            onClick={() => onSelectCategory?.('Planning & Decor')}
+            className="border border-[#e4e4e4] rounded-xl p-5 hover:shadow-wmg transition bg-white group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-[#e72e77]">
+                  <span className="material-symbols-outlined text-[22px]">event_seat</span>
+                </div>
+                <h3 className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e72e77] transition">Planning &amp; Decor</h3>
+              </div>
+              <span className="text-[12px] font-bold text-[#888]">3,800+</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 text-[12px] text-[#666]">
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Wedding Planners</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Decorators</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Mandap Concepts</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Floral Installations</span>
+            </div>
+          </div>
+
+          {/* Virtual Planning */}
+          <div 
+            onClick={() => onSelectCategory?.('Virtual Planning')}
+            className="border border-[#e4e4e4] rounded-xl p-5 hover:shadow-wmg transition bg-white group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-[#e72e77]">
+                  <span className="material-symbols-outlined text-[22px]">support_agent</span>
+                </div>
+                <h3 className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e72e77] transition">Virtual Planning</h3>
+              </div>
+              <span className="text-[12px] font-bold text-[#28a745]">FREE</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 text-[12px] text-[#666]">
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Virtual Genie Concierge</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Vendor Negotiation</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Budget Planning</span>
+            </div>
+          </div>
+
+          {/* Mehndi Artists */}
+          <div 
+            onClick={() => onSelectCategory?.('Mehndi Artist')}
+            className="border border-[#e4e4e4] rounded-xl p-5 hover:shadow-wmg transition bg-white group cursor-pointer"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-[#e72e77]">
+                  <span className="material-symbols-outlined text-[22px]">brush</span>
+                </div>
+                <h3 className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e72e77] transition">Mehndi Artists</h3>
+              </div>
+              <span className="text-[12px] font-bold text-[#888]">4,100+</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 text-[12px] text-[#666]">
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Bridal Mehndi</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Arabic Patterns</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Rajasthani Traditional</span>
+              <span className="bg-[#f7f7f7] px-2 py-0.5 rounded">Portrait Mehendi</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

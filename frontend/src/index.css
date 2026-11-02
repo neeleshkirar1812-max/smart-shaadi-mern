@@ -4,9 +4,9 @@
 
 @layer base {
   body {
-    background-color: #FAF8F6;
-    color: #1F1F1F;
-    font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    font-family: 'Lato', 'Manrope', sans-serif;
     letter-spacing: -0.012em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -17,6 +17,10 @@
     letter-spacing: -0.02em;
   }
 
+  .font-wmg {
+    font-family: 'Lato', sans-serif;
+  }
+
   .font-cinzel {
     font-family: 'Cinzel', serif;
     letter-spacing: 0.06em;
@@ -25,6 +29,43 @@
   .font-manrope {
     font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
   }
+}
+
+.wmg-container {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.wmg-service-tag {
+  font-size: 9px;
+  font-weight: 700;
+  color: #28a745;
+  border: 1px solid #28a745;
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.shadow-wmg {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.shadow-dropdown {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 /* Google Stitch Royal Editorial Gradients */

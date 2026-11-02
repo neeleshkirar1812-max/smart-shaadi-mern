@@ -1,129 +1,190 @@
 import React from 'react';
-import { Heart, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 
-export default function WmgMegaFooter({
-  setSelectedCity,
-  setSelectedCategory,
-  setView,
-  onOpenAuth
-}) {
-  const handleNav = (targetView, category = null) => {
-    if (category) setSelectedCategory(category);
-    setView(targetView);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
+export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }) {
   return (
-    <footer className="bg-[#1A1715] text-white pt-14 pb-10 border-t border-gray-800 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        
-        {/* Full 5-Column Mega Footer Matrix */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-xs">
-          
+    <footer className="bg-[#f8f8f8] border-t border-[#e4e4e4] pt-12 pb-8 text-[12px] text-[#666] font-sans">
+      <div className="wmg-container">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
           {/* Column 1: Start Planning */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-b border-gray-800 pb-2">
+          <div>
+            <h4 className="font-bold text-[#2c2c2c] text-[13px] uppercase tracking-wider mb-3">
               Start Planning
             </h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Search By City</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Search By Vendor</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Destination Wedding</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Download Mobile App</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">WMG Genie</button></li>
-              <li><button onClick={() => handleNav('discover', 'Venue')} className="hover:text-white transition">Venue Booking Service</button></li>
+            <ul className="space-y-1.5">
+              <li>
+                <button 
+                  onClick={() => { setView?.('discover'); onScrollToSection?.('vendors'); }} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Search By Vendor
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => { setView?.('discover'); onScrollToSection?.('popular-venues'); }} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Search By City
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onScrollToSection?.('app-download')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Download Our App
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onScrollToSection?.('featured-venues')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Top Rated Vendors
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => { setView?.('discover'); onScrollToSection?.('hero-search'); }} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Destination Wedding
+                </button>
+              </li>
             </ul>
           </div>
 
           {/* Column 2: Wedding Ideas */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-b border-gray-800 pb-2">
+          <div>
+            <h4 className="font-bold text-[#2c2c2c] text-[13px] uppercase tracking-wider mb-3">
               Wedding Ideas
             </h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Wedding Blog</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Real Weddings</button></li>
-              <li><button onClick={() => handleNav('discover', 'Bridal Wear')} className="hover:text-white transition">Trending Lehengas</button></li>
-              <li><button onClick={() => handleNav('discover', 'Decorator')} className="hover:text-white transition">Mandap Decor</button></li>
-              <li><button onClick={() => handleNav('playlist')} className="hover:text-white transition">Sangeet Choreography</button></li>
+            <ul className="space-y-1.5">
+              <li>
+                <button 
+                  onClick={() => onScrollToSection?.('blog')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Wedding Blog
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onScrollToSection?.('photos')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Wedding Inspiration Gallery
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onScrollToSection?.('real-weddings')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Real Wedding
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onOpenAuth?.('couple')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Submit Wedding
+                </button>
+              </li>
             </ul>
           </div>
 
           {/* Column 3: Photo Gallery */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-b border-gray-800 pb-2">
+          <div>
+            <h4 className="font-bold text-[#2c2c2c] text-[13px] uppercase tracking-wider mb-3">
               Photo Gallery
             </h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Bridal Lehenga Photos</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Mehndi Designs</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Wedding Sarees</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Blouse Designs</button></li>
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">Couple Poses</button></li>
+            <ul className="space-y-1.5">
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Bridal Wear</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Jewellery</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Bridal Makeup &amp; Hair</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Decor</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Photography</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Groom Wear</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Invitations &amp; Favors</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Accessories</button></li>
+              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Mehendi Designs</button></li>
             </ul>
           </div>
 
           {/* Column 4: Home */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-b border-gray-800 pb-2">
+          <div>
+            <h4 className="font-bold text-[#2c2c2c] text-[13px] uppercase tracking-wider mb-3">
               Home
             </h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => handleNav('discover')} className="hover:text-white transition">About WedMeGood</button></li>
-              <li><span className="cursor-pointer hover:text-white transition">Careers</span></li>
-              <li><span className="cursor-pointer hover:text-white transition">Contact Us</span></li>
-              <li><span className="cursor-pointer hover:text-white transition">Privacy Policy</span></li>
-              <li><span className="cursor-pointer hover:text-white transition">Terms & Conditions</span></li>
-              <li><span className="cursor-pointer hover:text-white transition">Anti-Fraud Price Shield</span></li>
+            <ul className="space-y-1.5">
+              <li><a className="hover:text-[#e72e77]" href="#about">About WedMeGood</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#careers">Careers</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#contact">Contact Us</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#sitemap">Site Map</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#terms">Terms &amp; Conditions</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#privacy">Privacy Policy</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#cancellation">Cancellation Policy</a></li>
+              <li><a className="hover:text-[#e72e77]" href="#annual-return">Annual Return</a></li>
             </ul>
           </div>
 
           {/* Column 5: Wedding Invitation Maker */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-b border-gray-800 pb-2">
+          <div>
+            <h4 className="font-bold text-[#2c2c2c] text-[13px] uppercase tracking-wider mb-3">
               Wedding Invitation Maker
             </h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => handleNav('website')} className="hover:text-white transition">Digital E-Invites</button></li>
-              <li><button onClick={() => handleNav('website')} className="hover:text-white transition">Save The Date Videos</button></li>
-              <li><button onClick={() => handleNav('website')} className="hover:text-white transition">Table Standees</button></li>
-              <li><button onClick={() => handleNav('shagun')} className="hover:text-white transition">Digital Shagun Registry</button></li>
+            <ul className="space-y-1.5">
+              <li>
+                <button 
+                  onClick={() => setView?.('website')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Wedding Card Designs
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => setView?.('website')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Save the Date Templates
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => setView?.('website')} 
+                  className="hover:text-[#e72e77] text-left"
+                >
+                  Invitation Video Templates
+                </button>
+              </li>
             </ul>
 
-            {/* Social Channels */}
-            <div className="pt-2">
-              <span className="text-[10px] uppercase font-bold text-gray-400 block mb-2">
+            <div className="mt-6">
+              <h5 className="font-bold text-[#2c2c2c] text-[11px] uppercase tracking-wider mb-2">
                 Follow Us
-              </span>
-              <div className="flex items-center gap-2">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#E72E77] flex items-center justify-center transition">
-                  <Facebook className="w-3.5 h-3.5" />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#E72E77] flex items-center justify-center transition">
-                  <Twitter className="w-3.5 h-3.5" />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#E72E77] flex items-center justify-center transition">
-                  <Instagram className="w-3.5 h-3.5" />
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-white/10 hover:bg-[#E72E77] flex items-center justify-center transition">
-                  <Youtube className="w-3.5 h-3.5" />
-                </a>
+              </h5>
+              <div className="flex items-center space-x-3 text-[#555]">
+                <a className="hover:text-[#e72e77]" href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
+                <a className="hover:text-[#e72e77]" href="https://twitter.com" target="_blank" rel="noreferrer">Twitter</a>
+                <a className="hover:text-[#e72e77]" href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+                <a className="hover:text-[#e72e77]" href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a>
               </div>
             </div>
           </div>
-
         </div>
 
-        {/* Bottom Copyright Notice */}
-        <div className="pt-6 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 gap-3">
-          <p>© 2026 WedMeGood. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            <span>Made with</span>
-            <Heart className="w-3.5 h-3.5 text-[#E72E77] fill-[#E72E77]" />
-            <span>in India • India&apos;s Favourite Wedding Planning Platform.</span>
-          </p>
+        {/* Bottom Bar */}
+        <div className="pt-6 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between text-[11px] text-[#888]">
+          <div>
+            © 2026 Terms &amp; Conditions | Privacy Policy
+          </div>
+          <div className="mt-2 md:mt-0 font-medium">
+            WedMeGood - Indian Wedding Planning Website
+          </div>
         </div>
-
       </div>
     </footer>
   );
