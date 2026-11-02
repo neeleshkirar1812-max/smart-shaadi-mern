@@ -52,7 +52,7 @@ export default function VendorDetailModal({ vendor, onClose, onSubmitInquiry, us
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-royal-sand/80 my-8">
+      <div className="relative bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-stitch-border my-8">
         
         {/* Close Button */}
         <button
@@ -74,12 +74,12 @@ export default function VendorDetailModal({ vendor, onClose, onSubmitInquiry, us
           <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 text-white">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-bold uppercase tracking-wider text-royal-lightGold border border-white/20">
+                <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stitch-gold-light border border-white/20">
                   {vendor.category}
                 </span>
                 {vendor.verified && (
-                  <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-900/80 backdrop-blur-md text-emerald-200 border border-emerald-500/30 text-[10px] sm:text-xs font-semibold">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-stitch-gold-light/95 backdrop-blur-md text-stitch-charcoal border border-stitch-gold-border text-[10px] sm:text-xs font-bold shadow-xs">
+                    <ShieldCheck className="w-3.5 h-3.5 text-stitch-gold" />
                     Verified Partner
                   </span>
                 )}
@@ -89,11 +89,11 @@ export default function VendorDetailModal({ vendor, onClose, onSubmitInquiry, us
               </h2>
               <div className="flex items-center gap-4 mt-2 text-xs sm:text-sm text-gray-300">
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4 text-royal-gold" />
+                  <MapPin className="w-4 h-4 text-stitch-gold" />
                   {vendor.city}
                 </span>
-                <span className="flex items-center gap-1 text-yellow-400 font-bold">
-                  <Star className="w-4 h-4 fill-current" />
+                <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-stitch-rose text-white font-bold text-xs shadow-xs">
+                  <Star className="w-3.5 h-3.5 fill-current" />
                   {vendor.rating} ({vendor.reviewsCount} reviews)
                 </span>
               </div>
@@ -101,7 +101,7 @@ export default function VendorDetailModal({ vendor, onClose, onSubmitInquiry, us
 
             <div className="text-right bg-white/10 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/20 shadow-lg">
               <span className="text-[10px] text-gray-300 block uppercase font-bold tracking-wider">Pricing Starts At</span>
-              <span className="font-serif text-2xl font-bold text-royal-lightGold">{vendor.price}</span>
+              <span className="font-serif text-2xl font-bold text-stitch-gold-light">{vendor.price}</span>
               <span className="text-xs text-gray-300 block">/{vendor.priceUnit}</span>
             </div>
           </div>
@@ -257,9 +257,9 @@ export default function VendorDetailModal({ vendor, onClose, onSubmitInquiry, us
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3.5 px-4 rounded-2xl royal-gradient-ruby text-white font-bold text-xs shadow-royal hover:shadow-luxury transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 disabled:opacity-50"
+                  className="w-full py-3.5 px-4 rounded-2xl bridal-gradient-rose text-white font-bold text-xs shadow-luxury hover:opacity-95 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 disabled:opacity-50"
                 >
-                  <Send className="w-3.5 h-3.5 text-royal-lightGold" />
+                  <Send className="w-3.5 h-3.5 text-stitch-gold-light" />
                   <span>{submitting ? 'Dispatching...' : 'Dispatch Inquiry to Studio'}</span>
                 </button>
 

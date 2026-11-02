@@ -103,9 +103,9 @@ export default function LivePhotoDrop({ onOpenStandee, showToast }) {
           </button>
           <button
             onClick={() => setUploadModalOpen(true)}
-            className="px-5 py-2.5 rounded-2xl royal-gradient-ruby text-white text-xs font-bold shadow-royal hover:shadow-luxury transition flex items-center gap-2"
+            className="px-5 py-2.5 rounded-2xl bridal-gradient-rose text-white text-xs font-bold shadow-luxury hover:opacity-95 transition flex items-center gap-2"
           >
-            <Upload className="w-4 h-4 text-royal-lightGold" />
+            <Upload className="w-4 h-4 text-stitch-gold-light" />
             <span>Drop Candid Photo</span>
           </button>
         </div>
@@ -227,9 +227,9 @@ export default function LivePhotoDrop({ onOpenStandee, showToast }) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3.5 rounded-2xl royal-gradient-ruby text-white text-xs font-bold shadow-royal hover:shadow-luxury transition flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-2xl bridal-gradient-rose text-white text-xs font-bold shadow-luxury hover:opacity-95 transition flex items-center justify-center gap-2"
               >
-                <Upload className="w-3.5 h-3.5 text-royal-lightGold" />
+                <Upload className="w-3.5 h-3.5 text-stitch-gold-light" />
                 <span>{submitting ? 'Dropping...' : 'Post Photo to Live Wall'}</span>
               </button>
             </form>

@@ -60,8 +60,8 @@ export default function AuthModal({ onClose, onLogin, onRegister }) {
         </button>
 
         {/* Brand Emblem */}
-        <div className="w-12 h-12 rounded-2xl royal-gradient-ruby flex items-center justify-center text-royal-gold mx-auto mb-4 shadow-royal ring-1 ring-royal-gold/40">
-          <Crown className="w-6 h-6 text-royal-lightGold" />
+        <div className="w-12 h-12 rounded-2xl bridal-gradient-rose flex items-center justify-center text-stitch-gold mx-auto mb-4 shadow-luxury ring-1 ring-stitch-gold/40">
+          <Crown className="w-6 h-6 text-stitch-gold-light" />
         </div>
 
         <div className="text-center mb-6">
@@ -193,7 +193,7 @@ export default function AuthModal({ onClose, onLogin, onRegister }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-4 rounded-2xl royal-gradient-ruby text-white font-bold text-xs shadow-royal hover:shadow-luxury transition-all transform hover:-translate-y-0.5 disabled:opacity-50 mt-2"
+            className="w-full py-3.5 px-4 rounded-2xl bridal-gradient-rose text-white font-bold text-xs shadow-luxury hover:opacity-95 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 mt-2"
           >
             {loading ? 'Authenticating...' : isRegister ? 'Create My Account' : 'Sign In to Wedding Desk'}
           </button>

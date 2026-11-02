@@ -1,6 +1,6 @@
 import React from 'react';
 import VendorCard from './VendorCard.jsx';
-import { Filter, Sparkles, MapPin, CheckCircle2, RotateCcw } from 'lucide-react';
+import { Sparkles, MapPin, CheckCircle2, RotateCcw } from 'lucide-react';
 
 export default function VendorMarketplace({
   vendors,
@@ -46,14 +46,14 @@ export default function VendorMarketplace({
       {/* Header & Controls */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
-          <span className="font-cinzel text-[11px] font-bold uppercase tracking-widest text-royal-wine block mb-1">
+          <span className="font-cinzel text-[11px] font-bold uppercase tracking-widest text-[#B4245D] block mb-1">
             Handpicked & Multi-Faith Verified
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-royal-charcoal">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1F1F1F]">
             Browse Curated Wedding Partners
           </h2>
-          <p className="text-xs text-gray-500 mt-1 font-sans">
-            Showing verified specialists for <strong className="text-royal-charcoal font-semibold">{selectedFaith}</strong> in <strong className="text-royal-charcoal font-semibold">{selectedCity}</strong>
+          <p className="text-xs text-[#7A7A7A] mt-1 font-sans">
+            Showing verified specialists for <strong className="text-[#1F1F1F] font-semibold">{selectedFaith}</strong> in <strong className="text-[#1F1F1F] font-semibold">{selectedCity}</strong>
           </p>
         </div>
 
@@ -61,10 +61,10 @@ export default function VendorMarketplace({
         <div className="flex items-center gap-2 self-start md:self-auto">
           <button
             onClick={() => setVerifiedOnly(!verifiedOnly)}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border transition ${
+            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border transition font-sans ${
               verifiedOnly
-                ? 'bg-emerald-800 text-white border-emerald-900 shadow-sm'
-                : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
+                ? 'bg-[#1B4332] text-white border-[#1B4332] shadow-sm'
+                : 'bg-white text-[#4A4A4A] border-[#F0ECE4] hover:border-[#D4AF37]'
             }`}
           >
             <CheckCircle2 className="w-3.5 h-3.5" />
@@ -73,7 +73,7 @@ export default function VendorMarketplace({
 
           <button
             onClick={onResetFilters}
-            className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold text-gray-500 hover:text-royal-charcoal hover:bg-royal-sand/50 transition border border-transparent hover:border-gray-200"
+            className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold text-[#7A7A7A] hover:text-[#1F1F1F] hover:bg-[#FAF8F6] transition border border-transparent hover:border-[#F0ECE4]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset</span>
@@ -89,10 +89,10 @@ export default function VendorMarketplace({
             <button
               key={f.id}
               onClick={() => setSelectedFaith(f.id)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition font-sans ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition font-sans ${
                 isSelected
-                  ? 'bg-royal-charcoal text-white shadow-sm'
-                  : 'bg-white text-gray-600 border border-royal-sand hover:bg-royal-sand/30'
+                  ? 'bg-[#1F1F1F] text-white shadow-xs'
+                  : 'bg-white text-[#4A4A4A] border border-[#F0ECE4] hover:bg-[#FAF8F6]'
               }`}
             >
               <span>{f.emoji}</span>
@@ -102,7 +102,7 @@ export default function VendorMarketplace({
         })}
       </div>
 
-      {/* Category Tabs */}
+      {/* Stitch Category Filter Chips: Pill-shaped with ivory background, transitioning to rose outline and #FFEBE8 fill when active */}
       <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-4">
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat;
@@ -110,10 +110,10 @@ export default function VendorMarketplace({
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition shadow-sm font-sans ${
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition font-sans ${
                 isSelected
-                  ? 'royal-gradient-wine text-white shadow-md'
-                  : 'bg-white text-gray-700 border border-royal-sand hover:bg-gray-50'
+                  ? 'bg-[#FFEBE8] text-[#B4245D] border-2 border-[#E72E76] font-bold shadow-xs'
+                  : 'bg-[#FAF8F6] text-[#4A4A4A] border border-[#F0ECE4] hover:border-[#E8D8A6]'
               }`}
             >
               {cat}
@@ -124,8 +124,8 @@ export default function VendorMarketplace({
 
       {/* City Filter Pills */}
       <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2 mb-8 text-xs font-sans">
-        <span className="text-gray-400 font-bold uppercase tracking-wider mr-2 flex items-center gap-1 flex-shrink-0 font-cinzel text-[10px]">
-          <MapPin className="w-3.5 h-3.5 text-royal-wine" /> Destination:
+        <span className="text-[#7A7A7A] font-bold uppercase tracking-wider mr-2 flex items-center gap-1 flex-shrink-0 font-cinzel text-[10px]">
+          <MapPin className="w-3.5 h-3.5 text-[#E72E76]" /> Destination:
         </span>
         {cities.map((city) => {
           const isSelected = selectedCity === city;
@@ -135,8 +135,8 @@ export default function VendorMarketplace({
               onClick={() => setSelectedCity(city)}
               className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition ${
                 isSelected
-                  ? 'bg-royal-wine text-white font-bold'
-                  : 'bg-royal-sand/50 text-gray-600 hover:bg-royal-sand'
+                  ? 'bg-[#E72E76] text-white font-bold'
+                  : 'bg-[#FAF8F6] text-[#7A7A7A] hover:bg-[#F0ECE4]'
               }`}
             >
               {city}
@@ -149,19 +149,19 @@ export default function VendorMarketplace({
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="bg-white rounded-3xl h-80 animate-pulse border border-gray-100" />
+            <div key={n} className="bg-white rounded-3xl h-80 animate-pulse border border-[#F0ECE4]" />
           ))}
         </div>
       ) : vendors.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-gray-200 p-8">
-          <Sparkles className="w-10 h-10 text-royal-gold mx-auto mb-3" />
-          <h3 className="font-serif text-xl font-bold text-gray-800">No matching partners found for this filter</h3>
-          <p className="text-xs text-gray-500 mt-1 max-w-sm mx-auto font-sans">
+        <div className="text-center py-16 bg-white rounded-3xl border border-dashed border-[#E8D8A6] p-8 shadow-ambient-gold">
+          <Sparkles className="w-10 h-10 text-[#D4AF37] mx-auto mb-3" />
+          <h3 className="font-serif text-xl font-bold text-[#1F1F1F]">No matching partners found for this filter</h3>
+          <p className="text-xs text-[#7A7A7A] mt-1 max-w-sm mx-auto font-sans">
             Try switching your tradition or destination city filter to explore more approved vendors.
           </p>
           <button
             onClick={onResetFilters}
-            className="mt-4 px-4 py-2 rounded-xl royal-gradient-wine text-white text-xs font-bold shadow"
+            className="mt-4 px-5 py-2.5 rounded-2xl bg-[#E72E76] hover:bg-[#B4245D] text-white text-xs font-bold shadow-luxury"
           >
             Reset Filters
           </button>

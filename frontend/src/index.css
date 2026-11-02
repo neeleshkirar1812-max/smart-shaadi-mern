@@ -4,27 +4,39 @@
 
 @layer base {
   body {
-    background-color: #FAF8F5;
-    color: #1A1715;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.015em;
+    background-color: #FAF8F6;
+    color: #1F1F1F;
+    font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.012em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, .font-serif {
     font-family: 'Playfair Display', Georgia, serif;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
   }
 
   .font-cinzel {
     font-family: 'Cinzel', serif;
     letter-spacing: 0.06em;
   }
+
+  .font-manrope {
+    font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+  }
 }
 
-/* Luxury Editorial Gradients */
+/* Google Stitch Royal Editorial Gradients */
+.bridal-gradient-rose {
+  background: linear-gradient(135deg, #E72E76 0%, #B4245D 100%);
+}
+
 .royal-gradient-ruby {
+  background: linear-gradient(135deg, #6B1D2F 0%, #4E1220 100%);
+}
+
+.royal-gradient-wine {
   background: linear-gradient(135deg, #6B1D2F 0%, #4E1220 100%);
 }
 
@@ -33,28 +45,22 @@
 }
 
 .royal-gradient-champagne {
-  background: linear-gradient(135deg, #F3E7C4 0%, #E2CF99 100%);
-}
-
-.royal-gradient-dark {
-  background: linear-gradient(180deg, rgba(22, 19, 18, 0.98) 0%, rgba(14, 12, 11, 0.99) 100%);
+  background: linear-gradient(135deg, #FBF4E8 0%, #E8D8A6 100%);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 160, 89, 0.22);
+  border: 1px solid #F0ECE4;
 }
 
-.glass-dark {
-  background: rgba(26, 23, 21, 0.88);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+.ambient-gold-shadow {
+  box-shadow: 0px 12px 32px rgba(212, 175, 55, 0.08);
 }
 
 .gold-border-glow {
-  border: 1px solid rgba(197, 160, 89, 0.4);
-  box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+  border: 1px solid #E8D8A6;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 /* Micro animations */
@@ -82,12 +88,12 @@
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #F2ECE4;
+  background: #FAF8F6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C5A059;
+  background: #D4AF37;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6B1D2F;
+  background: #E72E76;
 }

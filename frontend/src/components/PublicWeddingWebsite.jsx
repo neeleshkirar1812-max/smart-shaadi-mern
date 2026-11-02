@@ -133,9 +133,9 @@ export default function PublicWeddingWebsite({ wedding, onNavigateToShagun, onNa
             ].map((clock, i) => (
               <div 
                 key={i}
-                className="w-18 sm:w-24 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-royal-gold/30 shadow-luxury"
+                className="w-18 sm:w-24 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-stitch-gold/40 shadow-ambient-gold"
               >
-                <span className="block font-serif text-2xl sm:text-4xl font-bold text-royal-lightGold">
+                <span className="block font-serif text-2xl sm:text-4xl font-bold text-stitch-gold-light">
                   {String(clock.val).padStart(2, '0')}
                 </span>
                 <span className="text-[10px] sm:text-xs font-cinzel text-gray-300 tracking-wider uppercase">
@@ -149,16 +149,16 @@ export default function PublicWeddingWebsite({ wedding, onNavigateToShagun, onNa
           <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#rsvp-section"
-              className="px-8 py-3.5 rounded-2xl bg-royal-gold hover:bg-royal-goldHover text-royal-charcoal font-bold text-sm shadow-luxury transition-all transform hover:-translate-y-0.5"
+              className="px-8 py-3.5 rounded-2xl bridal-gradient-rose hover:opacity-95 text-white font-bold text-sm shadow-luxury transition-all transform hover:-translate-y-0.5"
             >
               RSVP for Wedding
             </a>
             {onNavigateToShagun && (
               <button
                 onClick={onNavigateToShagun}
-                className="px-6 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-royal-gold/50 text-white font-bold text-sm backdrop-blur-md transition-all flex items-center gap-2"
+                className="px-6 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-stitch-gold/50 text-white font-bold text-sm backdrop-blur-md transition-all flex items-center gap-2"
               >
-                <Gift className="w-4 h-4 text-royal-lightGold" />
+                <Gift className="w-4 h-4 text-stitch-gold-light" />
                 <span>Send Digital Shagun</span>
               </button>
             )}
@@ -446,9 +446,9 @@ export default function PublicWeddingWebsite({ wedding, onNavigateToShagun, onNa
               <button
                 type="submit"
                 disabled={submittingRsvp}
-                className="w-full py-4 rounded-2xl royal-gradient-wine text-white font-bold text-sm tracking-wide shadow-luxury hover:shadow-2xl transition disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-2xl bridal-gradient-rose text-white font-bold text-sm tracking-wide shadow-luxury hover:opacity-95 transition disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4 text-royal-lightGold" />
+                <Send className="w-4 h-4 text-stitch-gold-light" />
                 <span>{submittingRsvp ? 'Registering Attendance...' : 'Confirm RSVP Online'}</span>
               </button>
             </form>

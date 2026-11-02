@@ -197,8 +197,8 @@ export default function DigitalShagun({ onOpenStandee, showToast }) {
                       onClick={() => setAmount(String(p.val))}
                       className={`py-2 px-1 rounded-xl text-center transition ${
                         amount === String(p.val)
-                          ? 'royal-gradient-ruby text-white font-bold shadow-xs'
-                          : 'bg-royal-sand/30 text-royal-charcoal border border-royal-sand hover:bg-royal-sand/60 font-semibold'
+                          ? 'bridal-gradient-rose text-white font-bold shadow-xs'
+                          : 'bg-stitch-ivory text-stitch-charcoal border border-stitch-border hover:bg-stitch-rose-wash font-semibold'
                       }`}
                     >
                       <span className="text-[9px] block text-royal-gold/90">{p.label}</span>
@@ -229,9 +229,9 @@ export default function DigitalShagun({ onOpenStandee, showToast }) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3.5 px-4 rounded-2xl royal-gradient-ruby text-white font-bold text-xs shadow-royal hover:shadow-luxury transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
+                className="w-full py-3.5 px-4 rounded-2xl bridal-gradient-rose text-white font-bold text-xs shadow-luxury hover:opacity-95 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
               >
-                <Heart className="w-3.5 h-3.5 text-royal-lightGold fill-current" />
+                <Heart className="w-3.5 h-3.5 text-stitch-gold-light fill-current" />
                 <span>{submitting ? 'Recording...' : 'Send Shagun & Blessing'}</span>
               </button>
             </form>

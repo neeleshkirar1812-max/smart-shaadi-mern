@@ -197,13 +197,13 @@ export default function WeddingPlanner({
             </button>
           )}
 
-          <div className="flex bg-white p-1 rounded-2xl border border-royal-sand shadow-sm overflow-x-auto no-scrollbar">
+          <div className="flex bg-white p-1 rounded-2xl border border-stitch-border shadow-sm overflow-x-auto no-scrollbar">
             <button
               onClick={() => setActiveTab('budget')}
               className={`px-4 sm:px-5 py-2 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap ${
                 activeTab === 'budget'
-                  ? 'royal-gradient-ruby text-white shadow'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bridal-gradient-rose text-white shadow-luxury'
+                  : 'text-stitch-charcoal-subtle hover:text-stitch-rose'
               }`}
             >
               Budget Desk
@@ -212,8 +212,8 @@ export default function WeddingPlanner({
               onClick={() => setActiveTab('checklist')}
               className={`px-4 sm:px-5 py-2 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 whitespace-nowrap ${
                 activeTab === 'checklist'
-                  ? 'royal-gradient-ruby text-white shadow'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bridal-gradient-rose text-white shadow-luxury'
+                  : 'text-stitch-charcoal-subtle hover:text-stitch-rose'
               }`}
             >
               <span>Milestones</span>
@@ -223,8 +223,8 @@ export default function WeddingPlanner({
               onClick={() => setActiveTab('schedule')}
               className={`px-4 sm:px-5 py-2 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition whitespace-nowrap ${
                 activeTab === 'schedule'
-                  ? 'royal-gradient-ruby text-white shadow'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bridal-gradient-rose text-white shadow-luxury'
+                  : 'text-stitch-charcoal-subtle hover:text-stitch-rose'
               }`}
             >
               3-Day Schedule
