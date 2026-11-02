@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from './components/Navbar.jsx';
-import Hero from './components/Hero.jsx';
+
+// 16 WedMeGood (WMG) Master Portal Components
+import WmgTopBar from './components/wmg/WmgTopBar.jsx';
+import WmgHeroSearch from './components/wmg/WmgHeroSearch.jsx';
+import WmgVenueFilters from './components/wmg/WmgVenueFilters.jsx';
+import WmgGenieBanner from './components/wmg/WmgGenieBanner.jsx';
+import WmgTopCategoriesGrid from './components/wmg/WmgTopCategoriesGrid.jsx';
+import WmgPopularCities from './components/wmg/WmgPopularCities.jsx';
+import WmgFeaturedVendors from './components/wmg/WmgFeaturedVendors.jsx';
+import WmgRealWeddings from './components/wmg/WmgRealWeddings.jsx';
+import WmgInspirationGallery from './components/wmg/WmgInspirationGallery.jsx';
+import WmgAppDownloadBanner from './components/wmg/WmgAppDownloadBanner.jsx';
+import WmgEditorialJournal from './components/wmg/WmgEditorialJournal.jsx';
+import WmgPlanningToolsSuite from './components/wmg/WmgPlanningToolsSuite.jsx';
+import WmgDestinationShowcase from './components/wmg/WmgDestinationShowcase.jsx';
+import WmgTrustSocialProof from './components/wmg/WmgTrustSocialProof.jsx';
+import WmgVendorOnboarding from './components/wmg/WmgVendorOnboarding.jsx';
+import WmgMegaFooter from './components/wmg/WmgMegaFooter.jsx';
+import WmgSearchModal from './components/wmg/WmgSearchModal.jsx';
+import WmgWishlistModal from './components/wmg/WmgWishlistModal.jsx';
+
+// Core Vendor Marketplace & Detail Modal
 import VendorMarketplace from './components/VendorMarketplace.jsx';
 import VendorDetailModal from './components/VendorDetailModal.jsx';
+
+// Role-Gated Planning Desks & Workspaces
 import WeddingPlanner from './components/WeddingPlanner.jsx';
 import GuestManager from './components/GuestManager.jsx';
 import AiConcierge from './components/AiConcierge.jsx';
@@ -13,22 +35,35 @@ import AdminDashboard from './components/AdminDashboard.jsx';
 import AuthModal from './components/AuthModal.jsx';
 import Toast from './components/Toast.jsx';
 
-// 6 Royal Feature Expansions
+// Guest Experiences & Modals
 import DigitalShagun from './components/DigitalShagun.jsx';
 import LivePhotoDrop from './components/LivePhotoDrop.jsx';
 import SangeetPlaylist from './components/SangeetPlaylist.jsx';
 import PublicWeddingWebsite from './components/PublicWeddingWebsite.jsx';
 import SeatingPlanner from './components/SeatingPlanner.jsx';
 import PrintInvoiceModal from './components/PrintInvoiceModal.jsx';
-
-// Interactive Productivity, Print & Gatekeeper Modals
-import PrivateAccessGate from './components/PrivateAccessGate.jsx';
 import PrintTableStandeeModal from './components/PrintTableStandeeModal.jsx';
+import PrivateAccessGate from './components/PrivateAccessGate.jsx';
 
-// Data Fallbacks for 100% Standalone Offline Resilience
-import { initialVenues, initialGuests, initialTracks, initialGovernance, multiFaithTraditions } from './data/index.js';
+// Data Fallbacks for 100% Offline Resilience
+import { initialVenues, initialGuests } from './data/index.js';
 
-import { Heart, Sparkles, Phone, Mail, MapPin } from 'lucide-react';
+import { 
+  Sparkles, 
+  ArrowLeft, 
+  CalendarCheck, 
+  Users, 
+  Armchair, 
+  Share2, 
+  Bot, 
+  Gift, 
+  Camera, 
+  Music, 
+  Globe, 
+  Briefcase, 
+  ShieldCheck, 
+  Search 
+} from 'lucide-react';
 
 export default function App() {
   const [currentView, setCurrentView] = useState(() => {
@@ -39,11 +74,14 @@ export default function App() {
 
   const [user, setUser] = useState(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authModalRole, setAuthModalRole] = useState('couple');
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [wishlistModalOpen, setWishlistModalOpen] = useState(false);
   const [invoiceModalOpen, setInvoiceModalOpen] = useState(false);
   const [tableStandeeModalOpen, setTableStandeeModalOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
-  // Multi-Faith & Vendor Marketplace state
+  // Multi-Faith & Vendor Marketplace State
   const [selectedFaith, setSelectedFaith] = useState('All Traditions');
   const [vendors, setVendors] = useState(initialVenues);
   const [loadingVendors, setLoadingVendors] = useState(false);
@@ -51,9 +89,19 @@ export default function App() {
   const [selectedCity, setSelectedCity] = useState('All cities');
   const [searchQuery, setSearchQuery] = useState('');
   const [verifiedOnly, setVerifiedOnly] = useState(false);
+  const [activeVenueFilter, setActiveVenueFilter] = useState(null);
   const [selectedVendorForDetail, setSelectedVendorForDetail] = useState(null);
 
-  // Wedding & Planner state
+  // Wishlist State (synced to localStorage)
+  const [wishlist, setWishlist] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('wmg_wishlist') || '["p1", "v1"]');
+    } catch {
+      return ['p1', 'v1'];
+    }
+  });
+
+  // Wedding & Planner State
   const [wedding, setWedding] = useState({
     id: "w1",
     coupleName: "Ananya & Kabir",
@@ -90,10 +138,61 @@ export default function App() {
   // Bookings state
   const [bookings, setBookings] = useState([]);
 
-  // Toast helper
+  // Toast Helper
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3500);
+  };
+
+  // Sync Wishlist to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('wmg_wishlist', JSON.stringify(wishlist));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [wishlist]);
+
+  // Wishlist Handlers
+  const handleToggleWishlist = (id) => {
+    setWishlist(prev => 
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
+  const handleRemoveWishlistItem = (id) => {
+    setWishlist(prev => prev.filter(item => item !== id));
+  };
+
+  const handleClearWishlist = () => {
+    setWishlist([]);
+    showToast('Wishlist cleared');
+  };
+
+  // Global Keyboard Shortcut: Press '/' to trigger Search Modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) {
+        e.preventDefault();
+        setSearchModalOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Smooth Scroll Helper
+  const scrollToSection = (id) => {
+    if (currentView !== 'discover') {
+      setCurrentView('discover');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // 1. Initial Load & Auth Check
@@ -113,7 +212,7 @@ export default function App() {
     loadBookings();
   }, []);
 
-  // 2. Fetch Vendors when filters (including faith) change
+  // 2. Fetch Vendors when filters change
   useEffect(() => {
     loadVendors();
   }, [selectedFaith, selectedCategory, selectedCity, verifiedOnly]);
@@ -155,7 +254,9 @@ export default function App() {
       filtered = filtered.filter(v => v.category === selectedCategory);
     }
     if (selectedCity !== 'All cities') {
-      filtered = filtered.filter(v => v.city === selectedCity);
+      filtered = filtered.filter(v => 
+        v.city.toLowerCase().includes(selectedCity.toLowerCase().split(' ')[0])
+      );
     }
     if (verifiedOnly) {
       filtered = filtered.filter(v => v.verified);
@@ -210,7 +311,6 @@ export default function App() {
       showToast(`Welcome back, ${loggedUser.name}! ✨`);
       loadWeddingData();
       loadBookings();
-      // Auto-switch view to their primary workspace
       if (loggedUser.role === 'couple') {
         setCurrentView('planner');
       } else if (loggedUser.role === 'vendor') {
@@ -248,52 +348,58 @@ export default function App() {
   const handleLogout = async () => {
     try {
       await axios.post('/api/auth/logout');
-    } catch {}
-    localStorage.removeItem('smart_shaadi_token');
-    delete axios.defaults.headers.common['Authorization'];
-    setUser(null);
-    setCurrentView('discover');
-    showToast('Signed out of wedding desk');
-  };
-
-  const handleSwitchRole = async (creds, targetView) => {
-    await handleLogin(creds);
-    if (targetView) {
-      setCurrentView(targetView);
+    } catch {
+      // ignore
+    } finally {
+      localStorage.removeItem('smart_shaadi_token');
+      delete axios.defaults.headers.common['Authorization'];
+      setUser(null);
+      setCurrentView('discover');
+      showToast('Logged out securely');
     }
   };
 
-  // Wedding & Planner Handlers
+  // Planner Task & Schedule Handlers
   const handleUpdateWedding = async (updates) => {
     try {
-      const res = await axios.put('/api/wedding', updates);
+      const res = await axios.patch('/api/wedding', updates);
       setWedding(res.data);
+      showToast('Wedding details updated');
     } catch {
-      showToast('Could not save wedding updates', 'error');
+      setWedding(prev => ({ ...prev, ...updates }));
+      showToast('Updated locally (offline mode)');
     }
   };
 
-  const handleAddTask = async (taskData) => {
+  const handleAddTask = async (taskText, category = "General") => {
     try {
-      const res = await axios.post('/api/wedding/tasks', taskData);
+      const res = await axios.post('/api/wedding/tasks', { text: taskText, category });
       setWedding(prev => ({
         ...prev,
-        tasks: [...(prev?.tasks || []), res.data]
+        tasks: [...(prev.tasks || []), res.data]
       }));
+      showToast('Task added to wedding checklist');
     } catch {
-      showToast('Could not add task', 'error');
+      const newTask = { id: `t_${Date.now()}`, text: taskText, category, done: false };
+      setWedding(prev => ({
+        ...prev,
+        tasks: [...(prev.tasks || []), newTask]
+      }));
     }
   };
 
-  const handleToggleTask = async (taskId, done) => {
+  const handleToggleTask = async (taskId) => {
     try {
-      await axios.patch(`/api/wedding/tasks/${taskId}`, { done });
+      const res = await axios.patch(`/api/wedding/tasks/${taskId}/toggle`);
       setWedding(prev => ({
         ...prev,
-        tasks: prev.tasks.map(t => t.id === taskId ? { ...t, done } : t)
+        tasks: prev.tasks.map(t => t.id === taskId ? res.data : t)
       }));
     } catch {
-      showToast('Could not update task', 'error');
+      setWedding(prev => ({
+        ...prev,
+        tasks: prev.tasks.map(t => t.id === taskId ? { ...t, done: !t.done } : t)
+      }));
     }
   };
 
@@ -304,21 +410,28 @@ export default function App() {
         ...prev,
         tasks: prev.tasks.filter(t => t.id !== taskId)
       }));
-      showToast('Milestone removed');
     } catch {
-      showToast('Could not delete task', 'error');
+      setWedding(prev => ({
+        ...prev,
+        tasks: prev.tasks.filter(t => t.id !== taskId)
+      }));
     }
   };
 
-  const handleAddSchedule = async (scheduleData) => {
+  const handleAddSchedule = async (scheduleItem) => {
     try {
-      const res = await axios.post('/api/wedding/schedule', scheduleData);
+      const res = await axios.post('/api/wedding/schedule', scheduleItem);
       setWedding(prev => ({
         ...prev,
-        schedule: [...(prev?.schedule || []), res.data]
+        schedule: [...(prev.schedule || []), res.data]
       }));
+      showToast('Event added to wedding itinerary');
     } catch {
-      showToast('Could not add event', 'error');
+      const newSched = { ...scheduleItem, id: `s_${Date.now()}` };
+      setWedding(prev => ({
+        ...prev,
+        schedule: [...(prev.schedule || []), newSched]
+      }));
     }
   };
 
@@ -329,9 +442,11 @@ export default function App() {
         ...prev,
         schedule: prev.schedule.filter(s => s.id !== scheduleId)
       }));
-      showToast('Event removed from schedule');
     } catch {
-      showToast('Could not delete event', 'error');
+      setWedding(prev => ({
+        ...prev,
+        schedule: prev.schedule.filter(s => s.id !== scheduleId)
+      }));
     }
   };
 
@@ -341,8 +456,10 @@ export default function App() {
       const res = await axios.post('/api/guests', guestData);
       setGuests(prev => [res.data, ...prev]);
       loadGuestData();
+      showToast(`Guest ${guestData.name} invited!`);
     } catch {
-      showToast('Could not add guest', 'error');
+      const newGuest = { ...guestData, id: `g_${Date.now()}` };
+      setGuests(prev => [newGuest, ...prev]);
     }
   };
 
@@ -353,7 +470,7 @@ export default function App() {
       loadGuestData();
       showToast('RSVP status updated');
     } catch {
-      showToast('Could not update guest', 'error');
+      setGuests(prev => prev.map(g => g.id === guestId ? { ...g, ...updates } : g));
     }
   };
 
@@ -364,7 +481,7 @@ export default function App() {
       loadGuestData();
       showToast('Guest removed');
     } catch {
-      showToast('Could not delete guest', 'error');
+      setGuests(prev => prev.filter(g => g.id !== guestId));
     }
   };
 
@@ -405,27 +522,106 @@ export default function App() {
     setSelectedCity('All cities');
     setSearchQuery('');
     setVerifiedOnly(false);
+    setActiveVenueFilter(null);
+  };
+
+  // Filter Pill Handler
+  const handleApplyFilterPill = (query) => {
+    setSearchQuery(query);
+    loadVendors();
+    scrollToSection('catalog-marketplace');
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7F2] selection:bg-[#D4AF37] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#FAF8F5] selection:bg-[#E72E77] selection:text-white font-sans">
       
-      {/* Navbar */}
-      <Navbar
+      {/* SECTION 1: GLOBAL NAVIGATION BAR & CITY SELECTOR HEADER */}
+      <WmgTopBar
         currentView={currentView}
         setView={setCurrentView}
+        selectedCity={selectedCity}
+        setSelectedCity={(city) => { setSelectedCity(city); loadVendors(); }}
+        onOpenSearch={() => setSearchModalOpen(true)}
+        onOpenWishlist={() => setWishlistModalOpen(true)}
+        wishlistCount={wishlist.length}
         user={user}
-        onOpenAuth={() => setAuthModalOpen(true)}
+        onOpenAuth={(role = 'couple') => {
+          setAuthModalRole(role);
+          setAuthModalOpen(true);
+        }}
         onLogout={handleLogout}
+        onScrollToSection={scrollToSection}
       />
+
+      {/* QUICK WORKSPACE ACCESS STRIP (Shown when user is inside planning/management views) */}
+      {currentView !== 'discover' && (
+        <div className="bg-[#FAF3E0] border-b border-[#E8D8A6] px-4 py-2 text-xs">
+          <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto gap-4">
+            <button
+              onClick={() => setCurrentView('discover')}
+              className="flex items-center gap-1.5 text-[#E72E77] font-bold hover:underline flex-shrink-0"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to WedMeGood Master Portal</span>
+            </button>
+
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+              <button
+                onClick={() => setCurrentView('planner')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'planner' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                Wedding Desk
+              </button>
+              <button
+                onClick={() => setCurrentView('guests')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'guests' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                Guest & RSVP
+              </button>
+              <button
+                onClick={() => setCurrentView('seating')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'seating' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                Table Seating
+              </button>
+              <button
+                onClick={() => setCurrentView('shagun')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'shagun' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                Digital Shagun
+              </button>
+              <button
+                onClick={() => setCurrentView('photos')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'photos' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                Photo Drop
+              </button>
+              <button
+                onClick={() => setCurrentView('playlist')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'playlist' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                DJ Sangeet
+              </button>
+              <button
+                onClick={() => setCurrentView('website')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition ${currentView === 'website' ? 'bg-[#E72E77] text-white' : 'bg-white hover:bg-gray-100 text-gray-700'}`}
+              >
+                Couple Website
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content Area */}
       <main className="flex-1">
         
-        {/* VIEW 1: DISCOVER VENDORS MARKETPLACE */}
+        {/* VIEW 1: COMPLETE 16-SECTION WEDMEGOOD MASTER REPLICA */}
         {currentView === 'discover' && (
           <div>
-            <Hero
+            
+            {/* SECTION 2: HERO SEARCH BANNER & CATEGORY QUICK BAR */}
+            <WmgHeroSearch
               selectedFaith={selectedFaith}
               setSelectedFaith={setSelectedFaith}
               selectedCategory={selectedCategory}
@@ -434,24 +630,111 @@ export default function App() {
               setSelectedCity={setSelectedCity}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
-              onExplore={loadVendors}
+              onExplore={() => {
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
             />
 
-            <VendorMarketplace
-              vendors={vendors}
-              loading={loadingVendors}
-              selectedFaith={selectedFaith}
-              setSelectedFaith={setSelectedFaith}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
+            {/* SECTION 3: POPULAR VENUE SEARCHES & FILTER PILLS */}
+            <WmgVenueFilters
+              activeFilter={activeVenueFilter}
+              setActiveFilter={setActiveVenueFilter}
+              onApplyFilter={handleApplyFilterPill}
+            />
+
+            {/* SECTION 4: WEDMEGOOD GENIE / WEDSTA CONCIERGE BANNER */}
+            <WmgGenieBanner showToast={showToast} />
+
+            {/* SECTION 5: TOP VENDOR CATEGORIES VISUAL GRID (8-CARD) */}
+            <WmgTopCategoriesGrid
+              onSelectCategory={(cat) => {
+                setSelectedCategory(cat);
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
+            />
+
+            {/* SECTION 6: POPULAR CITIES & HERITAGE DESTINATIONS */}
+            <WmgPopularCities
               selectedCity={selectedCity}
-              setSelectedCity={setSelectedCity}
-              verifiedOnly={verifiedOnly}
-              setVerifiedOnly={setVerifiedOnly}
+              onSelectCity={(city) => {
+                setSelectedCity(city);
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
+            />
+
+            {/* SECTION 7: FEATURED & WEDMEGOOD VERIFIED GOLD VENDORS */}
+            <WmgFeaturedVendors
+              vendors={vendors}
               onSelectVendor={(v) => setSelectedVendorForDetail(v)}
               onBookVendor={(v) => setSelectedVendorForDetail(v)}
-              onResetFilters={resetFilters}
+              onToggleWishlist={handleToggleWishlist}
+              wishlist={wishlist}
             />
+
+            {/* CORE CATALOG MARKETPLACE & FILTERS */}
+            <div id="catalog-marketplace">
+              <VendorMarketplace
+                vendors={vendors}
+                loading={loadingVendors}
+                selectedFaith={selectedFaith}
+                setSelectedFaith={setSelectedFaith}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                selectedCity={selectedCity}
+                setSelectedCity={setSelectedCity}
+                verifiedOnly={verifiedOnly}
+                setVerifiedOnly={setVerifiedOnly}
+                onSelectVendor={(v) => setSelectedVendorForDetail(v)}
+                onBookVendor={(v) => setSelectedVendorForDetail(v)}
+                onResetFilters={resetFilters}
+              />
+            </div>
+
+            {/* SECTION 8: REAL WEDDING STORIES (WMG REAL WEDDINGS) */}
+            <WmgRealWeddings />
+
+            {/* SECTION 9: CURATED PHOTO GALLERY & INSPIRATION FEED */}
+            <WmgInspirationGallery
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+              showToast={showToast}
+            />
+
+            {/* SECTION 10: OFFICIAL WEDMEGOOD MOBILE APP DOWNLOAD BANNER */}
+            <WmgAppDownloadBanner showToast={showToast} />
+
+            {/* SECTION 11: WMG EDITORIAL & WEDDING JOURNAL */}
+            <WmgEditorialJournal />
+
+            {/* SECTION 12: DIGITAL WEDDING PLANNING TOOLS SUITE */}
+            <WmgPlanningToolsSuite
+              setView={setCurrentView}
+              onOpenStandee={() => setTableStandeeModalOpen(true)}
+            />
+
+            {/* SECTION 13: DESTINATION WEDDING SHOWCASE */}
+            <WmgDestinationShowcase
+              onSelectDestination={(dest) => {
+                setSelectedCity(dest);
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
+            />
+
+            {/* SECTION 14: CUSTOMER TRUST, SOCIAL PROOF & MEDIA MENTIONS */}
+            <WmgTrustSocialProof />
+
+            {/* SECTION 15: VENDOR PARTNER ONBOARDING BANNER */}
+            <WmgVendorOnboarding
+              onOpenVendorAuth={(role) => {
+                setAuthModalRole(role);
+                setAuthModalOpen(true);
+              }}
+            />
+
           </div>
         )}
 
@@ -600,84 +883,17 @@ export default function App() {
 
       </main>
 
-      {/* Royal Multi-Faith Footer */}
-      <footer className="bg-royal-charcoal text-white border-t border-royal-gold/20 pt-12 sm:pt-16 pb-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl royal-gradient-ruby flex items-center justify-center text-royal-gold font-serif font-bold text-xl shadow">
-                  S
-                </div>
-                <span className="font-serif text-2xl font-bold tracking-wide">
-                  Smart<span className="text-royal-ruby">Shaadi</span>
-                </span>
-              </div>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                India&apos;s all-faith luxury wedding planning platform. Connecting couples across Hindu Vivah, Muslim Nikah, Sikh Anand Karaj, Christian Nuptials, and Jain Vivah with verified venues, officiants, and artisans.
-              </p>
-              <div className="text-xs text-royal-lightGold font-semibold flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-royal-gold flex-shrink-0" />
-                <span>SmartEvent Karo • MERN Architecture</span>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-serif text-sm font-bold text-royal-lightGold uppercase tracking-wider mb-4">
-                Sacred Traditions
-              </h4>
-              <ul className="space-y-2 text-xs text-gray-400">
-                <li><button onClick={() => { setSelectedFaith('Hindu'); setCurrentView('discover'); }} className="hover:text-white transition">🕉️ Hindu Vivah & Saat Phere</button></li>
-                <li><button onClick={() => { setSelectedFaith('Muslim'); setCurrentView('discover'); }} className="hover:text-white transition">☪️ Muslim Nikah & Walima</button></li>
-                <li><button onClick={() => { setSelectedFaith('Sikh'); setCurrentView('discover'); }} className="hover:text-white transition">☬ Sikh Anand Karaj (4 Laavan)</button></li>
-                <li><button onClick={() => { setSelectedFaith('Christian'); setCurrentView('discover'); }} className="hover:text-white transition">✝️ Christian Nuptials & Mass</button></li>
-                <li><button onClick={() => { setSelectedFaith('Jain'); setCurrentView('discover'); }} className="hover:text-white transition">🪷 Jain Vivah & Chouhar Feasts</button></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-serif text-sm font-bold text-royal-lightGold uppercase tracking-wider mb-4">
-                Interactive Guest Suite
-              </h4>
-              <ul className="space-y-2 text-xs text-gray-400">
-                <li><button onClick={() => setCurrentView('shagun')} className="hover:text-white transition">🎁 Digital Shagun & UPI Registry</button></li>
-                <li><button onClick={() => setCurrentView('photos')} className="hover:text-white transition">📸 Live Guest Photo Drop (QR)</button></li>
-                <li><button onClick={() => setCurrentView('playlist')} className="hover:text-white transition">🎶 Sangeet & DJ Playlist Jam</button></li>
-                <li><button onClick={() => setCurrentView('website')} className="hover:text-white transition">💍 Public Couple Wedding Site</button></li>
-                <li><button onClick={() => setCurrentView('seating')} className="hover:text-white transition">🪑 Banquet Seating & Floor Map</button></li>
-                <li><button onClick={() => setInvoiceModalOpen(true)} className="hover:text-white transition text-royal-gold">📄 Royal Estimate & Invoice</button></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h4 className="font-serif text-sm font-bold text-royal-lightGold uppercase tracking-wider mb-4">
-                Concierge Hotline
-              </h4>
-              <p className="text-xs text-gray-400 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-royal-ruby flex-shrink-0" />
-                <span>Udaipur • Jaipur • Delhi NCR • Mumbai • Goa</span>
-              </p>
-              <p className="text-xs text-gray-400 flex items-center gap-2">
-                <Phone className="w-4 h-4 text-royal-gold flex-shrink-0" />
-                <span>+91 98290 12345 (24/7 Desk)</span>
-              </p>
-              <p className="text-xs text-gray-400 flex items-center gap-2">
-                <Mail className="w-4 h-4 text-royal-ruby flex-shrink-0" />
-                <span>concierge@smartshaadi.com</span>
-              </p>
-            </div>
-
-          </div>
-
-          <div className="pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
-            <p>© 2026 Smart Shaadi (SmartEvent Karo). All rights reserved.</p>
-            <p className="flex items-center gap-1">
-              Crafted with <Heart className="w-3.5 h-3.5 text-royal-ruby fill-current" /> on MERN Stack for all Indian Wedding Traditions.
-            </p>
-          </div>
-        </div>
-      </footer>
+      {/* SECTION 16: COMPREHENSIVE MEGA-FOOTER & SEO DIRECTORY */}
+      <WmgMegaFooter
+        setSelectedCity={(city) => { setSelectedCity(city); loadVendors(); }}
+        setSelectedCategory={(cat) => { setSelectedCategory(cat); loadVendors(); }}
+        setSelectedFaith={(faith) => { setSelectedFaith(faith); loadVendors(); }}
+        setView={setCurrentView}
+        onOpenAuth={(role) => {
+          setAuthModalRole(role);
+          setAuthModalOpen(true);
+        }}
+      />
 
       {/* Vendor Profile & Booking Modal */}
       {selectedVendorForDetail && (
@@ -693,12 +909,13 @@ export default function App() {
         />
       )}
 
-      {/* Auth Modal */}
+      {/* Auth Modal with Role Switching */}
       {authModalOpen && (
         <AuthModal
           onClose={() => setAuthModalOpen(false)}
           onLogin={handleLogin}
           onRegister={handleRegister}
+          initialRole={authModalRole}
         />
       )}
 
@@ -719,6 +936,41 @@ export default function App() {
           showToast={showToast}
         />
       )}
+
+      {/* Keyboard-Triggered Instant Search Modal */}
+      <WmgSearchModal
+        isOpen={searchModalOpen}
+        onClose={() => setSearchModalOpen(false)}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSelectCategory={(cat) => {
+          setSelectedCategory(cat);
+          loadVendors();
+          scrollToSection('catalog-marketplace');
+        }}
+        onSelectCity={(city) => {
+          setSelectedCity(city);
+          loadVendors();
+          scrollToSection('catalog-marketplace');
+        }}
+        onExecuteSearch={() => {
+          loadVendors();
+          scrollToSection('catalog-marketplace');
+        }}
+        vendors={vendors}
+      />
+
+      {/* Persistent Saved Wishlist Modal */}
+      <WmgWishlistModal
+        isOpen={wishlistModalOpen}
+        onClose={() => setWishlistModalOpen(false)}
+        wishlist={wishlist}
+        onRemoveItem={handleRemoveWishlistItem}
+        onClearWishlist={handleClearWishlist}
+        vendors={vendors}
+        onSelectVendor={(v) => setSelectedVendorForDetail(v)}
+        onOpenGenie={() => scrollToSection('genie-banner')}
+      />
 
       {/* Toast Notification */}
       <Toast toast={toast} onClose={() => setToast(null)} />

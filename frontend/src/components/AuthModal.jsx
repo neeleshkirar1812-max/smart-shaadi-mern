@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { X, Lock, Mail, User, Building, ShieldCheck, Heart, Crown } from 'lucide-react';
 
-export default function AuthModal({ onClose, onLogin, onRegister }) {
-  const [isRegister, setIsRegister] = useState(false);
+export default function AuthModal({ onClose, onLogin, onRegister, initialRole = 'couple', initialIsRegister = false }) {
+  const [isRegister, setIsRegister] = useState(initialIsRegister);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [role, setRole] = useState('couple');
+  const [role, setRole] = useState(initialRole);
   const [city, setCity] = useState('Udaipur');
   const [loading, setLoading] = useState(false);
 
