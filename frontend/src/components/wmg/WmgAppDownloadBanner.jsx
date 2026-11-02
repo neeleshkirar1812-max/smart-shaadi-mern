@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, CheckCircle2, Send, QrCode, Star, ShieldCheck, Heart } from 'lucide-react';
+import { Smartphone, Check, Send, Heart, Star, ShieldCheck } from 'lucide-react';
 
 export default function WmgAppDownloadBanner({ showToast }) {
   const [phone, setPhone] = useState('');
@@ -23,121 +23,100 @@ export default function WmgAppDownloadBanner({ showToast }) {
   };
 
   return (
-    <section id="app-download" className="py-14 sm:py-20 bg-gradient-to-r from-[#1A1715] via-[#2A2320] to-[#1A1715] text-white relative overflow-hidden">
+    <section id="app-download" className="py-16 bg-[#1A1715] text-white relative overflow-hidden font-sans">
       
       {/* Decorative Glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E72E77]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#D4AF37]/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Multi-Device Preview Illustration */}
+          {/* Left Column: Realistic Smartphone App Mockup */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative">
               
               {/* Phone Mockup Frame */}
-              <div className="w-64 sm:w-72 h-[480px] bg-black rounded-[40px] p-3 shadow-2xl border-4 border-gray-700/80 ring-1 ring-white/20 relative overflow-hidden">
-                <div className="w-28 h-4 bg-black rounded-b-xl absolute top-3 left-1/2 -translate-x-1/2 z-20" />
+              <div className="w-64 sm:w-72 h-[460px] bg-black rounded-[40px] p-3 shadow-2xl border-4 border-gray-700 ring-1 ring-white/20 relative overflow-hidden">
+                <div className="w-24 h-4 bg-black rounded-b-xl absolute top-3 left-1/2 -translate-x-1/2 z-20" />
                 
                 {/* Inside Screen */}
-                <div className="w-full h-full bg-[#FAF8F5] rounded-[32px] overflow-hidden text-[#1A1715] flex flex-col pt-6">
-                  {/* Mock App Header */}
+                <div className="w-full h-full bg-[#FAF8F5] rounded-[32px] overflow-hidden text-[#1A1715] flex flex-col pt-5">
                   <div className="px-4 py-2 bg-white border-b border-gray-100 flex items-center justify-between">
                     <span className="font-serif font-bold text-sm text-[#E72E77]">WedMeGood</span>
                     <Heart className="w-4 h-4 text-[#E72E77] fill-[#E72E77]" />
                   </div>
 
-                  {/* Mock Feed Content */}
-                  <div className="p-3 space-y-2.5 overflow-hidden flex-1">
-                    <div className="h-28 rounded-2xl bg-gradient-to-tr from-[#6B1D2F] to-[#B4245D] p-3 text-white flex flex-col justify-end">
-                      <p className="text-[10px] uppercase font-bold text-[#FFE088]">Ananya & Kabir</p>
-                      <p className="font-serif text-xs font-bold">128 Days to Wedding</p>
+                  <div className="p-3 space-y-2 flex-1">
+                    <div className="h-24 rounded-2xl bg-gradient-to-tr from-[#E72E77] to-[#B60056] p-3 text-white flex flex-col justify-end">
+                      <p className="font-serif text-xs font-bold">Your Big Day</p>
+                      <p className="text-[10px] text-gray-200">128 Days To Go</p>
                     </div>
 
                     <div className="p-2.5 rounded-xl bg-white shadow-xs border border-gray-100 text-[10px]">
-                      <p className="font-bold text-gray-800">✅ Checklist Progress: 82%</p>
-                      <p className="text-gray-400">18 tasks remaining</p>
-                    </div>
-
-                    <div className="p-2.5 rounded-xl bg-white shadow-xs border border-gray-100 text-[10px] flex items-center justify-between">
-                      <div>
-                        <p className="font-bold text-gray-800">💌 Guest RSVPs: 350</p>
-                        <p className="text-emerald-600 font-semibold">92% Confirmed</p>
-                      </div>
-                      <span className="text-[9px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-bold">Live</span>
+                      <p className="font-bold text-gray-800">✅ Checklist (120 Tasks)</p>
+                      <p className="text-gray-400">82% Completed</p>
                     </div>
 
                     <div className="p-2.5 rounded-xl bg-white shadow-xs border border-gray-100 text-[10px]">
-                      <p className="font-bold text-[#E72E77]">💬 Vendor Messages (3)</p>
-                      <p className="text-gray-400 truncate">The Leela: Banquet layout ready...</p>
+                      <p className="font-bold text-[#E72E77]">💬 Real-Time Vendor Chat</p>
+                      <p className="text-gray-400 truncate">The Leela Palace: Banquet layout confirmed</p>
                     </div>
                   </div>
 
-                  {/* Mock Tab Bar */}
-                  <div className="bg-white px-4 py-2.5 border-t border-gray-100 flex items-center justify-around text-[9px] text-gray-400 font-bold">
+                  <div className="bg-white px-4 py-2 border-t border-gray-100 flex items-center justify-around text-[9px] text-gray-400 font-bold">
                     <span className="text-[#E72E77]">Home</span>
                     <span>Vendors</span>
                     <span>Checklist</span>
-                    <span>Guests</span>
+                    <span>RSVP</span>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Floating Badge 1 */}
-              <div className="absolute -bottom-4 -left-6 bg-white text-[#1A1715] p-3 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-bounce duration-1000">
-                <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                  4.8★
-                </div>
-                <div className="text-left">
-                  <p className="text-xs font-bold">App of the Year</p>
-                  <p className="text-[10px] text-gray-500">100K+ 5-Star Reviews</p>
-                </div>
+              {/* Floating Rating Pill */}
+              <div className="absolute -bottom-3 -left-4 bg-white text-[#1A1715] p-3 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2">
+                <span className="font-bold text-emerald-600 text-sm">4.8★</span>
+                <span className="text-[10px] text-gray-500 font-semibold">100K+ Reviews</span>
               </div>
 
             </div>
           </div>
 
-          {/* Right Column: Copy & SMS Action */}
+          {/* Right Column: Copy, 3 Bullets & SMS Form */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E72E77]/20 border border-[#E72E77]/40 text-[#FF9EC4] text-xs font-bold uppercase tracking-wider">
-              <Smartphone className="w-3.5 h-3.5" />
-              <span>Available for iOS & Android</span>
-            </div>
-
+            
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              Plan Your Dream Wedding <br />
-              <span className="text-[#FFE088]">On The Go with WMG App</span>
+              Download The WedMeGood <br />
+              <span className="text-[#FF9EC4]">Mobile App Today!</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-gray-300 max-w-xl leading-relaxed">
-              Real-time vendor chat, digital guest RSVP tracking, 120-step checklist notifications, and collaborative family budget planning right in your pocket.
-            </p>
+            {/* 3 Tick Bullet Points */}
+            <div className="space-y-3 pt-1">
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span>Save vendor contacts & chat directly on the go</span>
+              </div>
 
-            {/* Feature Checkpoints */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              <div className="flex items-center gap-2.5 text-xs text-gray-200">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
-                <span>Real-Time Vendor WhatsApp & Chat</span>
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span>Manage 120-step wedding checklist & guest RSVPs</span>
               </div>
-              <div className="flex items-center gap-2.5 text-xs text-gray-200">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
-                <span>Instant Guest RSVP & Food Matrices</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs text-gray-200">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
-                <span>120+ Auspicious Vedic Muhurat Tasks</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs text-gray-200">
-                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
-                <span>0% Commission Vendor Price Shield</span>
+
+              <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-200">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span>Read 200,000+ authentic reviews & photos</span>
               </div>
             </div>
 
             {/* SMS Form */}
             <div className="pt-2">
-              <p className="text-xs font-bold text-gray-300 mb-2">
-                Get download link via SMS:
+              <p className="text-xs font-semibold text-gray-300 mb-2">
+                You will receive an SMS with a link to download the App
               </p>
 
               {!sent ? (
@@ -152,23 +131,21 @@ export default function WmgAppDownloadBanner({ showToast }) {
                       maxLength={10}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
-                      placeholder="98290 12345"
-                      className="w-full pl-12 pr-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs sm:text-sm font-medium focus:outline-none focus:border-[#E72E77]"
+                      placeholder="Enter mobile number"
+                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 text-xs sm:text-sm font-medium focus:outline-none focus:border-[#E72E77]"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="px-6 py-3 rounded-2xl bg-[#E72E77] hover:bg-[#B60056] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 flex-shrink-0"
+                    className="px-6 py-3 rounded-xl bg-[#E72E77] hover:bg-[#B60056] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center gap-1.5 flex-shrink-0"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>Send Link</span>
+                    <span>Download the App</span>
                   </button>
                 </form>
               ) : (
-                <div className="p-3 bg-emerald-900/40 border border-emerald-500/40 rounded-2xl flex items-center gap-2 text-xs text-emerald-300 max-w-md">
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                  <span>Download SMS dispatched to +91 {phone}! Check your SMS inbox.</span>
+                <div className="p-3 bg-emerald-900/40 border border-emerald-500/40 rounded-xl flex items-center gap-2 text-xs text-emerald-300 max-w-md">
+                  <span>Download link dispatched to +91 {phone}!</span>
                 </div>
               )}
 
@@ -178,17 +155,17 @@ export default function WmgAppDownloadBanner({ showToast }) {
             </div>
 
             {/* App Store & Google Play Badges */}
-            <div className="flex items-center gap-4 pt-2">
+            <div className="flex items-center gap-4 pt-1">
               <a
                 href="https://apps.apple.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 transition text-left"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition text-left"
               >
-                <div className="text-lg">🍎</div>
+                <span className="text-base">🍎</span>
                 <div>
-                  <span className="text-[9px] uppercase tracking-wider block text-gray-400">Download on the</span>
-                  <span className="text-xs font-bold text-white">Apple App Store</span>
+                  <span className="text-[8px] uppercase tracking-wider block text-gray-400">Download on the</span>
+                  <span className="text-xs font-bold text-white">App Store</span>
                 </div>
               </a>
 
@@ -196,12 +173,12 @@ export default function WmgAppDownloadBanner({ showToast }) {
                 href="https://play.google.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 transition text-left"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition text-left"
               >
-                <div className="text-lg">▶️</div>
+                <span className="text-base">▶️</span>
                 <div>
-                  <span className="text-[9px] uppercase tracking-wider block text-gray-400">Get it on</span>
-                  <span className="text-xs font-bold text-white">Google Play Store</span>
+                  <span className="text-[8px] uppercase tracking-wider block text-gray-400">Get it on</span>
+                  <span className="text-xs font-bold text-white">Google Play</span>
                 </div>
               </a>
             </div>

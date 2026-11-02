@@ -1,32 +1,21 @@
 import React from 'react';
-import { 
-  Search, 
-  MapPin, 
-  Sparkles, 
-  ChevronDown, 
-  Camera, 
-  Sparkle, 
-  Brush, 
-  Shirt, 
-  Paintbrush, 
-  Mail, 
-  UtensilsCrossed, 
-  Building2, 
-  Crown 
-} from 'lucide-react';
+import { Search, MapPin, ChevronDown, Camera, Brush, Paintbrush, Shirt, Sparkle, Mail, UtensilsCrossed, Building2 } from 'lucide-react';
 import { CITIES_LIST } from './WmgTopBar.jsx';
 
-export const WMG_CATEGORIES = [
-  { id: 'All vendors', label: 'All Categories', icon: Crown, count: '50,000+' },
-  { id: 'Venue', label: 'Banquets & Venues', icon: Building2, count: '14,200+' },
-  { id: 'Photographer', label: 'Photographers', icon: Camera, count: '8,150+' },
-  { id: 'Makeup Artist', label: 'Bridal Makeup', icon: Brush, count: '9,300+' },
-  { id: 'Decorator', label: 'Wedding Decorators', icon: Paintbrush, count: '3,800+' },
-  { id: 'Bridal Wear', label: 'Bridal Wear & Lehengas', icon: Shirt, count: '6,420+' },
-  { id: 'Mehndi Artist', label: 'Mehndi Artists', icon: Sparkle, count: '4,100+' },
-  { id: 'Invitations', label: 'Cards & E-Invites', icon: Mail, count: '2,900+' },
-  { id: 'Caterer', label: 'Catering & Chaat', icon: UtensilsCrossed, count: '3,200+' }
+export const WMG_HERO_CATEGORIES = [
+  { id: 'All vendors', label: 'All Categories' },
+  { id: 'Venue', label: 'Wedding Venues' },
+  { id: 'Photographer', label: 'Wedding Photographers' },
+  { id: 'Makeup Artist', label: 'Bridal Makeup Artists' },
+  { id: 'Decorator', label: 'Wedding Decorators' },
+  { id: 'Bridal Wear', label: 'Bridal Wear & Lehengas' },
+  { id: 'Mehndi Artist', label: 'Mehendi Artists' },
+  { id: 'Invitations', label: 'Invitations & Gifts' },
+  { id: 'Caterer', label: 'Catering Services' },
+  { id: 'Wedding Planner', label: 'Wedding Planners' }
 ];
+
+export const WMG_CATEGORIES = WMG_HERO_CATEGORIES;
 
 export default function WmgHeroSearch({
   selectedFaith,
@@ -48,47 +37,33 @@ export default function WmgHeroSearch({
     { id: 'Jain', label: 'Jain Vivah', emoji: '🪷' }
   ];
 
-  const handleCategoryIconClick = (catId) => {
-    setSelectedCategory(catId);
-    if (onExplore) onExplore();
-  };
-
   return (
     <div className="relative bg-[#1A1715] text-white overflow-hidden">
       
-      {/* High-Resolution Luxury Indian Wedding Backdrop with Gradient Vignette */}
+      {/* Full Dark-Overlay Mandap Backdrop */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85"
-          alt="Royal Indian Wedding Mandap & Couple"
-          className="w-full h-full object-cover object-center opacity-35 filter brightness-90 contrast-110 transform scale-105"
+          alt="Royal Wedding Mandap"
+          className="w-full h-full object-cover object-center opacity-30 filter brightness-90 contrast-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1715]/90 via-[#1A1715]/60 to-[#1A1715]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#E72E77]/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-[#1A1715]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-20 sm:pb-24 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20 text-center">
         
-        {/* Crown Heritage Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider mb-5 shadow-sm">
-          <Crown className="w-3.5 h-3.5 text-[#D4AF37]" />
-          <span>India&apos;s Most Trusted Wedding Planning Platform</span>
-        </div>
-
-        {/* Hero Headline */}
-        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-          Find Your Trusted Wedding Vendors & <br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9EC4] via-[#FFE088] to-[#D4AF37]">
-            Royal Heritage Venues
-          </span>
+        {/* Main Title: Your Wedding, Your Way */}
+        <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-white max-w-3xl mx-auto leading-tight">
+          Your Wedding, Your Way
         </h1>
 
-        <p className="mt-3 text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto font-sans font-light">
-          Shortlist from 50,000+ verified wedding banquets, candid photographers, bridal makeup artists, and royal decorators across India.
+        {/* Verbatim Subtitle */}
+        <p className="mt-3 text-base sm:text-lg text-gray-200 max-w-2xl mx-auto font-sans font-light">
+          Find the best wedding vendors with thousands of trusted reviews
         </p>
 
         {/* Multi-Faith Tradition Selector Chips */}
-        <div className="mt-6 flex items-center justify-center gap-2 overflow-x-auto no-scrollbar py-2">
+        <div className="mt-6 flex items-center justify-center gap-2 overflow-x-auto no-scrollbar py-1">
           {traditions.map((t) => {
             const isSelected = selectedFaith === t.id;
             return (
@@ -97,7 +72,7 @@ export default function WmgHeroSearch({
                 onClick={() => setSelectedFaith(t.id)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 ${
                   isSelected
-                    ? 'bg-[#E72E77] text-white shadow-lg shadow-[#E72E77]/40 ring-2 ring-white/30'
+                    ? 'bg-[#E72E77] text-white shadow-lg ring-2 ring-white/30'
                     : 'bg-white/15 hover:bg-white/25 text-gray-200 border border-white/20 backdrop-blur-sm'
                 }`}
               >
@@ -108,13 +83,13 @@ export default function WmgHeroSearch({
           })}
         </div>
 
-        {/* SECTION 2 SEARCH CONTROLLER BAR (Dual Dropdown + Search + CTA) */}
-        <div className="mt-8 max-w-4xl mx-auto bg-white rounded-3xl p-2.5 sm:p-3 shadow-2xl text-left border border-gray-100 flex flex-col md:flex-row items-center gap-2">
+        {/* Dual-Dropdown Search Controller */}
+        <div className="mt-8 max-w-3xl mx-auto bg-white rounded-2xl p-2.5 sm:p-3 shadow-2xl text-left border border-gray-100 flex flex-col md:flex-row items-center gap-2">
           
-          {/* Dropdown 1: Select Category */}
-          <div className="w-full md:w-1/3 px-3 py-1.5 border-b md:border-b-0 md:border-r border-gray-200">
+          {/* Dropdown 1: Select Vendor Type */}
+          <div className="w-full md:w-1/2 px-3 py-2 border-b md:border-b-0 md:border-r border-gray-200">
             <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
-              Vendor Category
+              Select Vendor Type
             </label>
             <div className="relative mt-0.5">
               <select
@@ -122,9 +97,9 @@ export default function WmgHeroSearch({
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full bg-transparent font-semibold text-xs sm:text-sm text-[#1A1715] focus:outline-none appearance-none cursor-pointer pr-6 py-1"
               >
-                {WMG_CATEGORIES.map((c) => (
+                {WMG_HERO_CATEGORIES.map((c) => (
                   <option key={c.id} value={c.id} className="text-gray-800">
-                    {c.label} ({c.count})
+                    {c.label}
                   </option>
                 ))}
               </select>
@@ -132,10 +107,10 @@ export default function WmgHeroSearch({
             </div>
           </div>
 
-          {/* Dropdown 2: Select City or Locality */}
-          <div className="w-full md:w-1/3 px-3 py-1.5 border-b md:border-b-0 md:border-r border-gray-200">
+          {/* Dropdown 2: Destination City */}
+          <div className="w-full md:w-1/2 px-3 py-2">
             <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
-              City / Destination
+              Destination City
             </label>
             <div className="relative mt-0.5">
               <select
@@ -145,7 +120,7 @@ export default function WmgHeroSearch({
               >
                 {CITIES_LIST.map((c) => (
                   <option key={c.name} value={c.name === 'All Cities' ? 'All cities' : c.name} className="text-gray-800">
-                    {c.name} ({c.count})
+                    {c.name}
                   </option>
                 ))}
               </select>
@@ -153,67 +128,29 @@ export default function WmgHeroSearch({
             </div>
           </div>
 
-          {/* Search Keywords Field */}
-          <div className="w-full md:w-1/3 px-3 py-1.5">
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
-              Keywords or Venue Name
-            </label>
-            <div className="relative mt-0.5 flex items-center">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={(e) => { if (e.key === 'Enter') onExplore(); }}
-                placeholder="e.g. The Leela, Taj, Candid..."
-                className="w-full bg-transparent font-medium text-xs sm:text-sm text-[#1A1715] placeholder-gray-400 focus:outline-none py-1"
-              />
-            </div>
-          </div>
-
-          {/* Instant CTA Button */}
+          {/* Get Started Pink CTA Button */}
           <button
             onClick={onExplore}
-            className="w-full md:w-auto px-7 py-3.5 rounded-2xl bg-[#E72E77] hover:bg-[#B60056] text-white text-xs sm:text-sm font-bold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 flex-shrink-0"
+            className="w-full md:w-auto px-8 py-3.5 rounded-xl bg-[#E72E77] hover:bg-[#B60056] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 flex-shrink-0"
           >
-            <Search className="w-4 h-4" />
-            <span>Find Vendors</span>
+            <span>Get Started</span>
           </button>
 
         </div>
 
-        {/* SECTION 2: CATEGORY ICON STRIP (8 High-Converting Icon Buttons) */}
-        <div className="mt-10 pt-8 border-t border-white/10 max-w-5xl mx-auto">
-          <p className="text-xs uppercase tracking-widest text-[#D4AF37] font-bold mb-4">
-            Popular Vendor Searches
-          </p>
-          <div className="grid grid-cols-4 sm:grid-cols-8 gap-3 sm:gap-4">
-            {WMG_CATEGORIES.slice(1).map((cat) => {
-              const Icon = cat.icon;
-              const isActive = selectedCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => handleCategoryIconClick(cat.id)}
-                  className={`flex flex-col items-center p-3 rounded-2xl transition-all duration-200 group text-center ${
-                    isActive 
-                      ? 'bg-white text-[#E72E77] shadow-xl scale-105' 
-                      : 'bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm'
-                  }`}
-                >
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-2 transition-transform group-hover:scale-110 ${
-                    isActive ? 'bg-[#FFF0F5] text-[#E72E77]' : 'bg-white/15 text-[#D4AF37]'
-                  }`}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[11px] font-bold leading-tight line-clamp-1">
-                    {cat.label.split('&')[0]}
-                  </span>
-                  <span className="text-[9px] text-gray-300 font-medium mt-0.5 opacity-80">
-                    {cat.count}
-                  </span>
-                </button>
-              );
-            })}
+        {/* Sub-bar: Popular Searches + Photo Credits */}
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-300 max-w-3xl mx-auto gap-2">
+          <div className="flex items-center gap-1.5 flex-wrap justify-center sm:justify-start">
+            <span className="font-semibold text-gray-400">Popular Searches:</span>
+            <button onClick={() => { setSelectedCategory('Venue'); onExplore(); }} className="hover:text-white underline decoration-dotted">4 Star & Above Hotels</button>
+            <span>•</span>
+            <button onClick={() => { setSelectedCategory('Venue'); onExplore(); }} className="hover:text-white underline decoration-dotted">Banquet Halls</button>
+            <span>•</span>
+            <button onClick={() => { setSelectedCategory('Venue'); onExplore(); }} className="hover:text-white underline decoration-dotted">Lawns</button>
+          </div>
+
+          <div className="text-[11px] text-gray-400">
+            Photo Credits : <span className="font-semibold text-gray-300">Shutterdown</span>
           </div>
         </div>
 

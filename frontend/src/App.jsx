@@ -5,6 +5,7 @@ import axios from 'axios';
 import WmgTopBar from './components/wmg/WmgTopBar.jsx';
 import WmgHeroSearch from './components/wmg/WmgHeroSearch.jsx';
 import WmgVenueFilters from './components/wmg/WmgVenueFilters.jsx';
+import WmgInhouseServices from './components/wmg/WmgInhouseServices.jsx';
 import WmgGenieBanner from './components/wmg/WmgGenieBanner.jsx';
 import WmgTopCategoriesGrid from './components/wmg/WmgTopCategoriesGrid.jsx';
 import WmgPopularCities from './components/wmg/WmgPopularCities.jsx';
@@ -17,6 +18,7 @@ import WmgPlanningToolsSuite from './components/wmg/WmgPlanningToolsSuite.jsx';
 import WmgDestinationShowcase from './components/wmg/WmgDestinationShowcase.jsx';
 import WmgTrustSocialProof from './components/wmg/WmgTrustSocialProof.jsx';
 import WmgVendorOnboarding from './components/wmg/WmgVendorOnboarding.jsx';
+import WmgCorporateContactDesk from './components/wmg/WmgCorporateContactDesk.jsx';
 import WmgMegaFooter from './components/wmg/WmgMegaFooter.jsx';
 import WmgSearchModal from './components/wmg/WmgSearchModal.jsx';
 import WmgWishlistModal from './components/wmg/WmgWishlistModal.jsx';
@@ -641,12 +643,32 @@ export default function App() {
               activeFilter={activeVenueFilter}
               setActiveFilter={setActiveVenueFilter}
               onApplyFilter={handleApplyFilterPill}
+              onSelectCategory={(cat) => {
+                setSelectedCategory(cat);
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
+              onSelectCity={(city) => {
+                setSelectedCity(city);
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
+            />
+
+            {/* WMG INHOUSE SERVICES (WEDSTA, GENIE, VENUE BOOKING) */}
+            <WmgInhouseServices
+              onSelectService={(cat) => {
+                setSelectedCategory(cat);
+                loadVendors();
+                scrollToSection('catalog-marketplace');
+              }}
+              onOpenGenie={() => scrollToSection('genie-banner')}
             />
 
             {/* SECTION 4: WEDMEGOOD GENIE / WEDSTA CONCIERGE BANNER */}
             <WmgGenieBanner showToast={showToast} />
 
-            {/* SECTION 5: TOP VENDOR CATEGORIES VISUAL GRID (8-CARD) */}
+            {/* SECTION 5: TOP VENDOR CATEGORIES VISUAL GRID (6-CARD WITH VIEW ALL) */}
             <WmgTopCategoriesGrid
               onSelectCategory={(cat) => {
                 setSelectedCategory(cat);
@@ -733,6 +755,15 @@ export default function App() {
                 setAuthModalRole(role);
                 setAuthModalOpen(true);
               }}
+            />
+
+            {/* CORPORATE & CONTACT DESK (VERBATIM ABOUT & GURGAON CONTACT MATRIX) */}
+            <WmgCorporateContactDesk
+              onOpenVendorAuth={(role) => {
+                setAuthModalRole(role);
+                setAuthModalOpen(true);
+              }}
+              showToast={showToast}
             />
 
           </div>
