@@ -6,7 +6,25 @@ Styled with Google Fonts (**Cinzel**, **Playfair Display**, **Plus Jakarta Sans*
 
 ---
 
-## ⚡ 1-Click Launch (Windows)
+## 🚀 1-Click Deploy to Render
+
+Deploy this full-stack application instantly to [Render.com](https://render.com) on the free tier:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/neeleshkirar1812-max/smart-shaadi-mern)
+
+### Render Deployment Steps:
+1. Log in to [dashboard.render.com](https://dashboard.render.com) with your GitHub account (**neeleshkirar1812-max**).
+2. Click **New +** -> **Web Service** (or **Blueprint**).
+3. Connect repository **`smart-shaadi-mern`**.
+4. Render automatically detects `render.yaml` with pre-filled settings:
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm start`
+   - **Health Check**: `/api/health`
+5. Click **Deploy Web Service** — in 2-3 minutes your live production website will be accessible globally at `https://smart-shaadi-mern.onrender.com`!
+
+---
+
+## ⚡ 1-Click Launch (Windows Localhost)
 
 Simply double-click the bundled launcher in the project root:
 ```text

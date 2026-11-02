@@ -3,10 +3,12 @@
   "version": "2.0.0",
   "description": "Smart Shaadi & SmartEvent Karo - Ultra Advanced Royal Indian Wedding Planning & Vendor Marketplace MERN Platform",
   "scripts": {
+    "build": "npm run install:all && npm run build:frontend",
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "node backend/server.js",
     "backend": "cd backend && npm start",
-    "frontend": "cd frontend && npm run dev",
-    "build:frontend": "cd frontend && npm run build"
+    "frontend": "cd frontend && npm run dev"
   },
   "keywords": [
     "mern",
