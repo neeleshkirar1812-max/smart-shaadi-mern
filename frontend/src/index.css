@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF8F5;
+    color: #1A1715;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.015em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.025em;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Luxury Editorial Gradients */
+.royal-gradient-ruby {
+  background: linear-gradient(135deg, #6B1D2F 0%, #4E1220 100%);
+}
+
+.royal-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #A88128 100%);
+}
+
+.royal-gradient-champagne {
+  background: linear-gradient(135deg, #F3E7C4 0%, #E2CF99 100%);
+}
+
+.royal-gradient-dark {
+  background: linear-gradient(180deg, rgba(22, 19, 18, 0.98) 0%, rgba(14, 12, 11, 0.99) 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 160, 89, 0.22);
+}
+
+.glass-dark {
+  background: rgba(26, 23, 21, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+}
+
+/* Micro animations */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 4s infinite ease-in-out;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Luxury Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F2ECE4;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6B1D2F;
+}

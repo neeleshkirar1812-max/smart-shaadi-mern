@@ -1,0 +1,23 @@
+{
+  "name": "smart-shaadi-mern",
+  "version": "2.0.0",
+  "description": "Smart Shaadi & SmartEvent Karo - Ultra Advanced Royal Indian Wedding Planning & Vendor Marketplace MERN Platform",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "mern",
+    "wedding-planner",
+    "indian-wedding",
+    "shaadi",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "SmartEvent Karo Team",
+  "license": "MIT"
+}
