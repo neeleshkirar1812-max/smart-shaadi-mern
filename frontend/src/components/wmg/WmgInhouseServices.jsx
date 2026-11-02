@@ -22,62 +22,100 @@ export default function WmgInhouseServices({ onSelectService, onOpenGenie, onOpe
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
           {/* Wedsta */}
           <div 
             onClick={() => handleOpen('wedsta')} 
-            className="bg-white border border-[#ffe0ea] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer group"
+            className="bg-white border border-[#ffe0ea] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition relative cursor-pointer group flex flex-col justify-between"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-pink-50 rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-125 transition"></div>
-            <span className="bg-[#e72e77] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase inline-block mb-3">
-              WMG SERVICE
-            </span>
-            <h3 className="text-lg font-bold text-[#2c2c2c] mb-1">Wedsta</h3>
-            <p className="text-[13px] text-[#666] mb-4">
-              WMG At Home, Family Makeup Services by certified beauty artists.
-            </p>
-            <button className="text-[#e72e77] font-bold text-[13px] hover:underline flex items-center space-x-1">
-              <span>Know More</span>
-              <span>→</span>
-            </button>
+            <div className="h-44 overflow-hidden relative">
+              <img 
+                src="https://image.wedmegood.com/resized-nw/570X/uploads/wmg_services/wedsta_dweb.jpg" 
+                alt="Wedsta" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+              />
+              <span className="absolute top-3 left-3 bg-[#e72e77] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase shadow-xs">
+                WMG SERVICE
+              </span>
+            </div>
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-[#2c2c2c] group-hover:text-[#e72e77] transition mb-1">
+                  Wedsta
+                </h3>
+                <p className="text-[13px] text-[#666] mb-4">
+                  WMG At Home, Family Makeup Services by certified beauty artists.
+                </p>
+              </div>
+              <button className="text-[#e72e77] font-bold text-[13px] hover:underline flex items-center space-x-1 text-left">
+                <span>Know More</span>
+                <span>→</span>
+              </button>
+            </div>
           </div>
 
           {/* Genie Services */}
           <div 
             onClick={() => handleOpen('genie')} 
-            className="bg-white border border-[#d6ecff] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer group"
+            className="bg-white border border-[#d6ecff] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition relative cursor-pointer group flex flex-col justify-between"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-125 transition"></div>
-            <span className="bg-[#0070ba] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase inline-block mb-3">
-              WMG SERVICE
-            </span>
-            <h3 className="text-lg font-bold text-[#2c2c2c] mb-1">Genie Services</h3>
-            <p className="text-[13px] text-[#666] mb-4">
-              Plan your dream wedding in your budget with dedicated personal wedding managers.
-            </p>
-            <button className="text-[#0070ba] font-bold text-[13px] hover:underline flex items-center space-x-1">
-              <span>Know More</span>
-              <span>→</span>
-            </button>
+            <div className="h-44 overflow-hidden relative">
+              <img 
+                src="https://image.wedmegood.com/resized-nw/570X/uploads/wmg_services/genie_dweb.jpg" 
+                alt="Genie Services" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+              />
+              <span className="absolute top-3 left-3 bg-[#0070ba] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase shadow-xs">
+                WMG SERVICE
+              </span>
+            </div>
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-[#2c2c2c] group-hover:text-[#0070ba] transition mb-1">
+                  Genie Services
+                </h3>
+                <p className="text-[13px] text-[#666] mb-4">
+                  Plan your dream wedding in your budget with dedicated personal wedding managers.
+                </p>
+              </div>
+              <button className="text-[#0070ba] font-bold text-[13px] hover:underline flex items-center space-x-1 text-left">
+                <span>Know More</span>
+                <span>→</span>
+              </button>
+            </div>
           </div>
 
           {/* Venue Booking Service */}
           <div 
             onClick={() => handleOpen('venue')} 
-            className="bg-white border border-[#fff2ce] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer group"
+            className="bg-white border border-[#fff2ce] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition relative cursor-pointer group flex flex-col justify-between"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-50 rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-125 transition"></div>
-            <span className="bg-[#b38600] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase inline-block mb-3">
-              WMG SERVICE
-            </span>
-            <h3 className="text-lg font-bold text-[#2c2c2c] mb-1">Venue Booking Service</h3>
-            <p className="text-[13px] text-[#666] mb-4">
-              Best Price Guaranteed &amp; exclusive date holding directly with palace banquets.
-            </p>
-            <button className="text-[#b38600] font-bold text-[13px] hover:underline flex items-center space-x-1">
-              <span>Know More</span>
-              <span>→</span>
-            </button>
+            <div className="h-44 overflow-hidden relative">
+              <img 
+                src="https://image.wedmegood.com/resized-nw/570X/uploads/wmg_services/venue_dweb.jpg" 
+                alt="Venue Booking Service" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+              />
+              <span className="absolute top-3 left-3 bg-[#b38600] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase shadow-xs">
+                WMG SERVICE
+              </span>
+            </div>
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-[#2c2c2c] group-hover:text-[#b38600] transition mb-1">
+                  Venue Booking Service
+                </h3>
+                <p className="text-[13px] text-[#666] mb-4">
+                  Best Price Guaranteed &amp; exclusive date holding directly with palace banquets.
+                </p>
+              </div>
+              <button className="text-[#b38600] font-bold text-[13px] hover:underline flex items-center space-x-1 text-left">
+                <span>Know More</span>
+                <span>→</span>
+              </button>
+            </div>
           </div>
+
         </div>
       </div>
     </section>

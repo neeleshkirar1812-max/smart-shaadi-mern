@@ -6,57 +6,85 @@ export const POPULAR_CITIES = [
     name: 'Delhi NCR',
     subtitle: 'Banquets, Farmhouses & 5-Stars',
     count: '2,840+ Venues',
-    image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=500&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/1/delhi.png',
     tag: 'Trending'
   },
   {
     name: 'Mumbai',
     subtitle: 'Seafront Lawns & Luxury Ballrooms',
     count: '1,920+ Venues',
-    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=500&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/6/bombay.png',
     tag: 'Bespoke'
   },
   {
     name: 'Bangalore',
     subtitle: 'Lush Gardens & Heritage Villas',
     count: '1,450+ Venues',
-    image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=500&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/9/banglore.png',
     tag: 'Green Lawns'
   },
   {
     name: 'Jaipur',
     subtitle: 'Royal Havelis & Imperial Forts',
     count: '1,180+ Venues & Forts',
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=500&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/17/jaipur.png',
     tag: 'Royal Heritage'
-  },
-  {
-    name: 'Udaipur',
-    subtitle: 'Lake Pichola Palaces & Royal Vivah',
-    count: '780+ Heritage Palaces',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80',
-    tag: 'Crown Gem'
   },
   {
     name: 'Goa',
     subtitle: 'Sun-Kissed Beachfront Mandaps',
     count: '620+ Beach Resorts',
-    image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=500&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/16/goa.png',
     tag: 'Beach Vows'
   },
   {
     name: 'Hyderabad',
     subtitle: 'Nizami Grandeur & Historic Courtyards',
     count: '890+ Nizami Palaces',
-    image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=500&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/11/hyderabad.png',
     tag: 'Nizami Grandeur'
   },
   {
-    name: 'Jim Corbett',
-    subtitle: 'Wilderness Vows & Forest Retreats',
-    count: '310+ Wilderness Resorts',
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80',
-    tag: 'Nature Bliss'
+    name: 'Chennai',
+    subtitle: 'Coastal Mandapams & Luxury Resorts',
+    count: '740+ Venues',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/10/chennai.png',
+    tag: 'Temple Heritage'
+  },
+  {
+    name: 'Kolkata',
+    subtitle: 'Colonial Mansions & Grand Banquets',
+    count: '810+ Heritage Spaces',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/12/kolkata.png',
+    tag: 'City of Joy'
+  },
+  {
+    name: 'Pune',
+    subtitle: 'Hillview Resorts & Open Lawns',
+    count: '650+ Venues',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/7/pune.jpg',
+    tag: 'Scenic Vows'
+  },
+  {
+    name: 'Lucknow',
+    subtitle: 'Nawabi Havelis & Royal Banquets',
+    count: '540+ Venues',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/22/lucknow.png',
+    tag: 'Nawabi Grandeur'
+  },
+  {
+    name: 'Chandigarh',
+    subtitle: 'Lush Farmhouses & Modern Clubs',
+    count: '490+ Venues',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/15/chandigarh.png',
+    tag: 'Modern Chic'
+  },
+  {
+    name: 'Ahmedabad',
+    subtitle: 'Heritage Havelis & Party Plots',
+    count: '610+ Spaces',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/14/ahmedabad.png',
+    tag: 'Heritage Vivah'
   }
 ];
 

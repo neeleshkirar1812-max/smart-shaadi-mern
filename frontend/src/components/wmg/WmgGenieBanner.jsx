@@ -75,6 +75,16 @@ export default function WmgGenieBanner({ showToast }) {
   return (
     <section id="genie-banner" className="py-12 bg-gradient-to-r from-[#FAF3E0] via-[#FCF9F8] to-[#FFEBE8] border-y border-[#E8D8A6]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Authentic Genie Banner Visual */}
+        <div className="mb-8 rounded-2xl overflow-hidden shadow-sm border border-[#E8D8A6]/50">
+          <img 
+            src="https://image.wedmegood.com/resized/1000X/uploads/Genie_Banner_Web.jpg" 
+            alt="WedMeGood Genie Banner" 
+            className="w-full h-auto object-cover max-h-52"
+          />
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Column: Value Proposition & Trust Badges */}

@@ -11,7 +11,7 @@ export const VERBATIM_FEATURED_VENDORS = [
     price: '₹ 15,000',
     unit: 'per function',
     city: 'Bangalore',
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=700&q=80',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/member/4493919/1779456738_Look____deepaskayakalp_MUA___Educator___imkrititripathi_Muse___laxmi.jaiswal2002_Jewellery___da.jpg?crop=3,148,1074,604',
     phone: '919829012345'
   },
   {
@@ -23,7 +23,7 @@ export const VERBATIM_FEATURED_VENDORS = [
     price: '₹ 999',
     unit: 'onwards per plate',
     city: 'Pune',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/member/1765153/1690199512_TKM___Edited_Jpgs__129_of_133___1_.jpg?crop=18,177,1979,1113',
     phone: '919829012346'
   },
   {
@@ -35,7 +35,7 @@ export const VERBATIM_FEATURED_VENDORS = [
     price: '₹ 1,500',
     unit: 'onwards per plate',
     city: 'Jaipur',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/project/326554/1780301433_DSC09361_e.jpg?crop=212,226,1624,914',
     phone: '919829012347'
   },
   {
@@ -47,49 +47,11 @@ export const VERBATIM_FEATURED_VENDORS = [
     price: '₹ 18,000',
     unit: 'per function',
     city: 'Lucknow',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/member/2417928/1772779601_ChatGPT_Image_Mar_6__2026__12_15_25_PM.png?crop=8,169,1520,855',
     phone: '919829012348'
   },
   {
     id: 'wmg-v5',
-    name: 'The Leela Palace Bangalore',
-    category: 'Venue',
-    categoryDisplay: '5-Star Luxury Palace, Marathahalli',
-    rating: '4.9',
-    tag: 'Luxury 5★',
-    price: '₹ 4,500',
-    unit: 'onwards per plate',
-    city: 'Bangalore',
-    image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=700&q=80',
-    phone: '919829012349'
-  },
-  {
-    id: 'wmg-v6',
-    name: 'The Raj Palace by Small Luxury Hotels',
-    category: 'Venue',
-    categoryDisplay: 'Heritage Grand Palace, Amer Road',
-    rating: '5.0',
-    tag: 'Heritage Vivah',
-    price: '₹ 5,000',
-    unit: 'onwards per plate',
-    city: 'Jaipur',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=80',
-    phone: '919829012350'
-  },
-  {
-    id: 'wmg-v7',
-    name: 'The Blooming Story India',
-    category: 'Decorators',
-    categoryDisplay: 'Theme Decorators, Goregaon',
-    rating: '4.8',
-    price: '₹ 60,000',
-    unit: 'onwards',
-    city: 'Mumbai',
-    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80',
-    phone: '919829012351'
-  },
-  {
-    id: 'wmg-v8',
     name: 'Deepa\'s Kayakalp Salon & Academy',
     category: 'Bridal Makeup',
     categoryDisplay: 'Bridal Makeup, Kidwai Nagar',
@@ -98,8 +60,46 @@ export const VERBATIM_FEATURED_VENDORS = [
     price: '₹ 10,000',
     unit: 'per function',
     city: 'Kanpur',
-    image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=700&q=80',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/member/4493919/1779456738_Look____deepaskayakalp_MUA___Educator___imkrititripathi_Muse___laxmi.jaiswal2002_Jewellery___da.jpg?crop=3,148,1074,604',
     phone: '919829012352'
+  },
+  {
+    id: 'wmg-v6',
+    name: 'The King\'s Meadows',
+    category: 'Venue',
+    categoryDisplay: 'Wedding Venues, Vidyaranyapura',
+    rating: '4.9',
+    tag: 'Verified',
+    price: '₹ 2,200',
+    unit: 'onwards per plate',
+    city: 'Bangalore',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/member/1765153/1690199512_TKM___Edited_Jpgs__129_of_133___1_.jpg?crop=18,177,1979,1113',
+    phone: '919829012353'
+  },
+  {
+    id: 'wmg-v7',
+    name: 'The Leela Bhartiya City Bengaluru',
+    category: 'Venue',
+    categoryDisplay: '5-Star Luxury Banquet & Lawn',
+    rating: '5.0',
+    tag: '5-Star Luxury',
+    price: '₹ 3,000',
+    unit: 'onwards per plate',
+    city: 'Bangalore',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/member/2417928/1772779601_ChatGPT_Image_Mar_6__2026__12_15_25_PM.png?crop=8,169,1520,855',
+    phone: '919829012354'
+  },
+  {
+    id: 'wmg-v8',
+    name: 'Reia Diamonds',
+    category: 'Jewellery',
+    categoryDisplay: 'Bridal Diamond Jewellery, South Bangalore',
+    rating: '4.8',
+    price: 'Price on Request',
+    unit: '',
+    city: 'Bangalore',
+    image: 'https://image.wedmegood.com/resized/450X/uploads/project/326554/1780301433_DSC09361_e.jpg?crop=212,226,1624,914',
+    phone: '919829012355'
   }
 ];
 
@@ -117,7 +117,7 @@ export default function WmgFeaturedVendors({
     if (activeCategoryFilter === 'All') return true;
     if (activeCategoryFilter === 'Venues') return v.category === 'Venue';
     if (activeCategoryFilter === 'Makeup') return v.category === 'Bridal Makeup';
-    if (activeCategoryFilter === 'Decor') return v.category === 'Decorators';
+    if (activeCategoryFilter === 'Jewellery') return v.category === 'Jewellery';
     return true;
   });
 
@@ -146,7 +146,7 @@ export default function WmgFeaturedVendors({
           <div className="flex items-center space-x-3">
             {/* Quick Filter Chips */}
             <div className="flex items-center bg-white rounded-full p-1 border border-gray-200 text-xs font-semibold">
-              {['All', 'Venues', 'Makeup', 'Decor'].map((cat) => (
+              {['All', 'Venues', 'Makeup', 'Jewellery'].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategoryFilter(cat)}
@@ -182,7 +182,7 @@ export default function WmgFeaturedVendors({
                 className="bg-white rounded-xl overflow-hidden shadow-wmg border border-[#e8e8e8] flex flex-col justify-between group cursor-pointer hover:border-[#e72e77]/40 transition duration-300"
               >
                 <div>
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden bg-gray-100">
                     <img 
                       alt={vendor.name} 
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 

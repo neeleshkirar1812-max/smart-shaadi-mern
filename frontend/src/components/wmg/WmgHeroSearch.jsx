@@ -1,121 +1,140 @@
 import React from 'react';
 
 export const WMG_HERO_CATEGORIES = [
-  { id: 'All vendors', label: 'Select vendor type' },
-  { id: 'Venue', label: 'Wedding Venues (Banquets, Palaces, Lawns)' },
-  { id: 'Makeup Artist', label: 'Bridal Makeup Artists' },
-  { id: 'Photographer', label: 'Wedding Photographers' },
-  { id: 'Decorator', label: 'Wedding Decorators' },
-  { id: 'Bridal Wear', label: 'Bridal Wear & Lehengas' },
-  { id: 'Groom Wear', label: 'Groom Wear & Sherwani' },
-  { id: 'Wedding Planner', label: 'Wedding Planners' },
-  { id: 'Mehndi Artist', label: 'Mehndi Artists' },
-  { id: 'Caterer', label: 'Catering & Food Services' }
+  'Venues',
+  'Photographers',
+  'Bridal Makeup',
+  'Wedding Decorators',
+  'Bridal Wear',
+  'Mehndi Artists',
+  'Wedding Cards',
+  'Catering'
 ];
 
 export const WMG_CATEGORIES = WMG_HERO_CATEGORIES;
 
-export const HERO_CITIES = [
-  'Select city',
-  'Delhi NCR (Gurgaon, Noida, Delhi)',
-  'Mumbai & Suburbs',
-  'Bangalore',
-  'Jaipur (Heritage Havelis & Forts)',
-  'Udaipur (Lakeside Palaces)',
-  'Goa (Beach Resorts)',
-  'Hyderabad',
-  'Pune',
-  'Kolkata'
-];
-
 export default function WmgHeroSearch({
-  selectedFaith,
-  setSelectedFaith,
   selectedCategory,
   setSelectedCategory,
   selectedCity,
   setSelectedCity,
-  searchQuery,
-  setSearchQuery,
   onExplore
 }) {
-  return (
-    <section className="relative bg-black text-white min-h-[460px] flex items-center justify-center overflow-hidden font-sans">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          alt="Royal Wedding"
-          className="w-full h-full object-cover opacity-60"
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60"></div>
-      </div>
+  const currentCityVal = selectedCity === 'All cities' ? 'All Cities' : selectedCity;
 
-      <div className="relative z-10 wmg-container text-center py-16">
-        <h1 className="text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight mb-3 font-serif text-white">
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (onExplore) onExplore();
+  };
+
+  return (
+    <section 
+      id="hero-search" 
+      className="relative text-white min-h-[480px] flex items-center justify-center overflow-hidden font-sans"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('https://image.wedmegood.com/resized/1900X/uploads/city_bg_image/1/north.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
+      <div className="wmg-container relative z-10 text-center py-16 px-4">
+        {/* Main Heading Verbatim */}
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 drop-shadow-md">
           Your Wedding, Your Way
         </h1>
-        <p className="text-lg md:text-xl text-gray-200 font-light mb-10">
+        <p className="text-base md:text-lg text-gray-200 mb-8 font-medium drop-shadow">
           Find the best wedding vendors with thousands of trusted reviews
         </p>
 
         {/* Exact WedMeGood Search Bar Controller */}
-        <div className="max-w-3xl mx-auto bg-white rounded-lg p-2 shadow-2xl flex flex-col md:flex-row items-center gap-2">
+        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-xl md:rounded-full p-2.5 shadow-2xl flex flex-col md:flex-row items-center gap-2">
+          
           {/* Dropdown 1: Select Vendor Type */}
-          <div className="flex-1 w-full relative border-b md:border-b-0 md:border-r border-gray-200 py-2 px-3 text-left">
-            <label className="block text-[11px] font-bold text-[#888] uppercase tracking-wider">Vendor Type</label>
+          <div className="w-full md:w-1/2 flex items-center px-4 py-2 border-b md:border-b-0 md:border-r border-gray-200">
+            <span className="material-symbols-outlined text-gray-400 mr-2">search</span>
             <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full text-[14px] font-semibold text-[#333] bg-transparent outline-none cursor-pointer"
+              value={selectedCategory === 'All vendors' ? '' : selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value || 'All vendors')}
+              className="w-full text-[14px] text-gray-700 bg-transparent outline-none cursor-pointer font-medium"
             >
-              {WMG_HERO_CATEGORIES.map((c) => (
-                <option key={c.id} value={c.id === 'All vendors' ? 'All vendors' : c.id}>
-                  {c.label}
-                </option>
-              ))}
+              <option value="">Select Vendor Category (e.g. Venues, Makeup)</option>
+              <option value="Venue">Venues (Banquet Halls, Lawns, 4/5 Star Hotels)</option>
+              <option value="Photographer">Photographers (Candid, Pre-Wedding, Cinematic)</option>
+              <option value="Makeup Artist">Makeup Artists (Bridal, Airbrush HD, Family)</option>
+              <option value="Planning & Decor">Planning &amp; Decor (Decorators, Planners)</option>
+              <option value="Mehndi Artist">Mehndi Artists (Bridal, Arabic, Traditional)</option>
+              <option value="Music & Dance">Music &amp; Dance (DJs, Choreographers)</option>
+              <option value="Food & Catering">Catering Services &amp; Chaat Stalls</option>
+              <option value="Bridal Wear">Bridal Wear &amp; Lehengas</option>
             </select>
           </div>
 
           {/* Dropdown 2: Select City */}
-          <div className="flex-1 w-full relative py-2 px-3 text-left">
-            <label className="block text-[11px] font-bold text-[#888] uppercase tracking-wider">Destination City</label>
+          <div className="w-full md:w-1/3 flex items-center px-4 py-2">
+            <span className="material-symbols-outlined text-gray-400 mr-2">location_on</span>
             <select
               value={selectedCity}
-              onChange={(e) => setSelectedCity(e.target.value.split(' ')[0] === 'Select' ? 'All cities' : e.target.value.split(' ')[0])}
-              className="w-full text-[14px] font-semibold text-[#333] bg-transparent outline-none cursor-pointer"
+              onChange={(e) => setSelectedCity(e.target.value)}
+              className="w-full text-[14px] text-gray-700 bg-transparent outline-none cursor-pointer font-medium"
             >
-              {HERO_CITIES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
+              <option value="All cities">All Cities (Pan India)</option>
+              <option value="Delhi NCR">Delhi NCR</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Jaipur">Jaipur</option>
+              <option value="Udaipur">Udaipur</option>
+              <option value="Goa">Goa</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Pune">Pune</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Jim Corbett">Jim Corbett</option>
             </select>
           </div>
 
           {/* Get Started Button */}
           <button
-            onClick={onExplore}
-            className="w-full md:w-auto bg-[#e72e77] hover:bg-[#d11f67] text-white font-bold text-[15px] px-8 py-3.5 rounded-md transition whitespace-nowrap shadow-md"
+            type="submit"
+            className="w-full md:w-auto bg-[#e72e77] hover:bg-[#d11f67] text-white font-bold text-[15px] px-8 py-3.5 rounded-lg md:rounded-full transition shadow-md whitespace-nowrap"
           >
             Get Started
           </button>
-        </div>
+        </form>
 
         {/* Quick Popular Keywords & Photo Credits */}
-        <div className="mt-4 flex flex-wrap items-center justify-between text-[12px] text-gray-300 max-w-3xl mx-auto px-2">
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-400">Popular Searches:</span>
-            <button onClick={() => { setSelectedCategory('Bridal Wear'); onExplore(); }} className="hover:text-white underline">Bridal Wear</button>
+        <div className="mt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-300 max-w-4xl mx-auto px-2">
+          <div className="flex items-center space-x-2 overflow-x-auto py-1">
+            <span className="font-semibold text-gray-400 whitespace-nowrap">Popular Searches:</span>
+            <button 
+              type="button"
+              onClick={() => { setSelectedCategory('Venue'); if (onExplore) onExplore(); }} 
+              className="hover:text-white underline whitespace-nowrap"
+            >
+              Wedding Venues in {currentCityVal}
+            </button>
             <span>•</span>
-            <button onClick={() => { setSelectedCategory('Makeup Artist'); onExplore(); }} className="hover:text-white underline">Bridal Makeup Artists</button>
+            <button 
+              type="button"
+              onClick={() => { setSelectedCategory('Photographer'); if (onExplore) onExplore(); }} 
+              className="hover:text-white underline whitespace-nowrap"
+            >
+              Bridal Makeup
+            </button>
             <span>•</span>
-            <button onClick={() => { setSelectedCategory('Photographer'); onExplore(); }} className="hover:text-white underline">Photographers</button>
+            <button 
+              type="button"
+              onClick={() => { setSelectedCategory('Photographer'); if (onExplore) onExplore(); }} 
+              className="hover:text-white underline whitespace-nowrap"
+            >
+              Photographers
+            </button>
           </div>
-          <div className="text-gray-400 italic">
-            Photo Credits : Shutterdown
+          <div className="mt-2 md:mt-0 text-[11px] text-gray-400">
+            Photo Credits: <span className="text-gray-300 font-medium">Shutterdown</span>
           </div>
         </div>
+
       </div>
     </section>
   );

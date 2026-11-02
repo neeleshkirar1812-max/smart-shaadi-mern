@@ -107,7 +107,7 @@ export default function WmgAppDownloadBanner({ showToast, onOpenDownloadModal })
                 <div className="h-28 rounded-lg overflow-hidden relative">
                   <img 
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80" 
+                    src="https://image.wedmegood.com/resized/500X/uploads/city_bg_image/1/north.jpg" 
                     alt="WedMeGood App"
                   />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white font-bold text-xs">

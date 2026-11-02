@@ -45,6 +45,21 @@ export const OTHER_POPULAR_CITIES = [
   'Faridabad'
 ];
 
+export const CITY_ICONS = {
+  'Delhi NCR': 'https://image.wedmegood.com/resized/500X/uploads/city_image/1/delhi.png',
+  'Mumbai': 'https://image.wedmegood.com/resized/500X/uploads/city_image/6/bombay.png',
+  'Bangalore': 'https://image.wedmegood.com/resized/500X/uploads/city_image/9/banglore.png',
+  'Hyderabad': 'https://image.wedmegood.com/resized/500X/uploads/city_image/11/hyderabad.png',
+  'Chennai': 'https://image.wedmegood.com/resized/500X/uploads/city_image/10/chennai.png',
+  'Kolkata': 'https://image.wedmegood.com/resized/500X/uploads/city_image/12/kolkata.png',
+  'Jaipur': 'https://image.wedmegood.com/resized/500X/uploads/city_image/17/jaipur.png',
+  'Goa': 'https://image.wedmegood.com/resized/500X/uploads/city_image/16/goa.png',
+  'Pune': 'https://image.wedmegood.com/resized/500X/uploads/city_image/7/pune.jpg',
+  'Lucknow': 'https://image.wedmegood.com/resized/500X/uploads/city_image/22/lucknow.png',
+  'Chandigarh': 'https://image.wedmegood.com/resized/500X/uploads/city_image/15/chandigarh.png',
+  'Ahmedabad': 'https://image.wedmegood.com/resized/500X/uploads/city_image/14/ahmedabad.png'
+};
+
 export default function WmgTopBar({
   currentView,
   setView,
@@ -208,11 +223,18 @@ export default function WmgTopBar({
                           <button
                             key={c}
                             onClick={() => handleSelectCity(c)}
-                            className={`w-full text-left px-3.5 py-2 text-[13px] flex items-center justify-between font-medium hover:bg-pink-50 hover:text-[#e72e77] transition ${
+                            className={`w-full text-left px-3.5 py-1.5 text-[13px] flex items-center justify-between font-medium hover:bg-pink-50 hover:text-[#e72e77] transition ${
                               currentDisplayCity === c ? 'bg-pink-50 text-[#e72e77] font-bold' : ''
                             }`}
                           >
-                            <span>{c}</span>
+                            <div className="flex items-center space-x-2">
+                              {CITY_ICONS[c] ? (
+                                <img src={CITY_ICONS[c]} alt="" className="w-5 h-5 rounded-full object-cover shrink-0" />
+                              ) : (
+                                <span className="w-5 h-5 rounded-full bg-pink-100 text-[#e72e77] flex items-center justify-center text-[10px] font-bold">📍</span>
+                              )}
+                              <span>{c}</span>
+                            </div>
                             {currentDisplayCity === c && <Check className="w-3.5 h-3.5 text-[#e72e77]" />}
                           </button>
                         ))}

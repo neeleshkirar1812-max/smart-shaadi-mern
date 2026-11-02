@@ -7,7 +7,7 @@ export const DESTINATIONS = [
     theme: 'Lakeside Palaces & Royal Vivah',
     range: '₹45 Lakhs - ₹1.5 Cr',
     venuesCount: '84 Palaces',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/option_image/368/heritage.jpg',
     description: 'Lake Pichola views, floating candle mandaps, and imperial Mewari royal hospitality.'
   },
   {
@@ -15,7 +15,7 @@ export const DESTINATIONS = [
     theme: 'Beachfront Resorts & Coastal Vows',
     range: '₹30 Lakhs - ₹85 Lakhs',
     venuesCount: '112 Resorts',
-    image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/16/goa.png',
     description: 'Sunset mandaps on private beaches, coconut grove sangeets, and tropical cocktails.'
   },
   {
@@ -23,7 +23,7 @@ export const DESTINATIONS = [
     theme: 'Regal Havelis & Historic Forts',
     range: '₹35 Lakhs - ₹1.2 Cr',
     venuesCount: '96 Forts & Lawns',
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/city_image/17/jaipur.png',
     description: 'Royal courtyards, elephant procession gates, and Shekhawati mirrored ballrooms.'
   },
   {
@@ -31,7 +31,7 @@ export const DESTINATIONS = [
     theme: 'Misty Mountains & Forest Retreats',
     range: '₹25 Lakhs - ₹65 Lakhs',
     venuesCount: '48 Retreats',
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/option_image/67/resorts.jpg',
     description: 'Pine-forested riverbanks, campfire sangeet jams, and serene Himalayan backdrops.'
   },
   {
@@ -39,7 +39,7 @@ export const DESTINATIONS = [
     theme: 'Exotic Island & Skyline Weddings',
     range: '₹60 Lakhs - ₹2.5 Cr',
     venuesCount: '72 Luxury Venues',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80',
+    image: 'https://image.wedmegood.com/resized/500X/uploads/option_image/489/destination.jpg',
     description: 'Cliffside ocean vows in Bali, Phuket beachfront villas, and Dubai desert ballrooms.'
   }
 ];
