@@ -13,7 +13,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
             <ul className="space-y-1.5">
               <li>
                 <button 
-                  onClick={() => { setView?.('discover'); onScrollToSection?.('vendors'); }} 
+                  onClick={() => setView?.('vendors')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Search By Vendor
@@ -21,7 +21,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => { setView?.('discover'); onScrollToSection?.('popular-venues'); }} 
+                  onClick={() => setView?.('venues')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Search By City
@@ -37,7 +37,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => onScrollToSection?.('featured-venues')} 
+                  onClick={() => setView?.('vendors')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Top Rated Vendors
@@ -45,7 +45,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => { setView?.('discover'); onScrollToSection?.('hero-search'); }} 
+                  onClick={() => setView?.('venues')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Destination Wedding
@@ -62,7 +62,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
             <ul className="space-y-1.5">
               <li>
                 <button 
-                  onClick={() => onScrollToSection?.('blog')} 
+                  onClick={() => setView?.('blog-page')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Wedding Blog
@@ -70,7 +70,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => onScrollToSection?.('photos')} 
+                  onClick={() => setView?.('photos-gallery')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Wedding Inspiration Gallery
@@ -78,7 +78,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => onScrollToSection?.('real-weddings')} 
+                  onClick={() => setView?.('real-weddings-page')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Real Wedding
@@ -101,15 +101,15 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               Photo Gallery
             </h4>
             <ul className="space-y-1.5">
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Bridal Wear</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Jewellery</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Bridal Makeup &amp; Hair</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Decor</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Photography</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Groom Wear</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Invitations &amp; Favors</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Wedding Accessories</button></li>
-              <li><button onClick={() => onScrollToSection?.('photos')} className="hover:text-[#e72e77]">Mehendi Designs</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Bridal Wear</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Wedding Jewellery</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Bridal Makeup &amp; Hair</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Wedding Decor</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Wedding Photography</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Groom Wear</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Invitations &amp; Favors</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Wedding Accessories</button></li>
+              <li><button onClick={() => setView?.('photos-gallery')} className="hover:text-[#e72e77]">Mehendi Designs</button></li>
             </ul>
           </div>
 
@@ -119,14 +119,12 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               Home
             </h4>
             <ul className="space-y-1.5">
-              <li><a className="hover:text-[#e72e77]" href="#about">About WedMeGood</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#careers">Careers</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#contact">Contact Us</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#sitemap">Site Map</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#terms">Terms &amp; Conditions</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#privacy">Privacy Policy</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#cancellation">Cancellation Policy</a></li>
-              <li><a className="hover:text-[#e72e77]" href="#annual-return">Annual Return</a></li>
+              <li><button onClick={() => setView?.('discover')} className="hover:text-[#e72e77]">About WedMeGood</button></li>
+              <li><button onClick={() => setView?.('discover')} className="hover:text-[#e72e77]">Careers</button></li>
+              <li><button onClick={() => setView?.('discover')} className="hover:text-[#e72e77]">Contact Us</button></li>
+              <li><button onClick={() => setView?.('discover')} className="hover:text-[#e72e77]">Site Map</button></li>
+              <li><button onClick={() => setView?.('discover')} className="hover:text-[#e72e77]">Terms &amp; Conditions</button></li>
+              <li><button onClick={() => setView?.('discover')} className="hover:text-[#e72e77]">Privacy Policy</button></li>
             </ul>
           </div>
 
@@ -138,7 +136,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
             <ul className="space-y-1.5">
               <li>
                 <button 
-                  onClick={() => setView?.('website')} 
+                  onClick={() => setView?.('e-invites-page')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Wedding Card Designs
@@ -146,7 +144,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => setView?.('website')} 
+                  onClick={() => setView?.('e-invites-page')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Save the Date Templates
@@ -154,7 +152,7 @@ export default function WmgMegaFooter({ setView, onScrollToSection, onOpenAuth }
               </li>
               <li>
                 <button 
-                  onClick={() => setView?.('website')} 
+                  onClick={() => setView?.('e-invites-page')} 
                   className="hover:text-[#e72e77] text-left"
                 >
                   Invitation Video Templates

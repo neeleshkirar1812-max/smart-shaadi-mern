@@ -26,6 +26,15 @@ import WmgWriteReviewModal from './components/wmg/WmgWriteReviewModal.jsx';
 import WmgInhouseServicesModal from './components/wmg/WmgInhouseServicesModal.jsx';
 import WmgAppDownloadModal from './components/wmg/WmgAppDownloadModal.jsx';
 
+// 7 Dedicated Navigation Portal Pages (1:1 with WedMeGood Nav)
+import WmgVenuesPage from './components/wmg/WmgVenuesPage.jsx';
+import WmgVendorsPage from './components/wmg/WmgVendorsPage.jsx';
+import WmgPhotosPage from './components/wmg/WmgPhotosPage.jsx';
+import WmgRealWeddingsPage from './components/wmg/WmgRealWeddingsPage.jsx';
+import WmgBlogPage from './components/wmg/WmgBlogPage.jsx';
+import WmgEInvitesPage from './components/wmg/WmgEInvitesPage.jsx';
+import WmgGeniePage from './components/wmg/WmgGeniePage.jsx';
+
 // Core Vendor Marketplace & Detail Modal
 import VendorMarketplace from './components/VendorMarketplace.jsx';
 import VendorDetailModal from './components/VendorDetailModal.jsx';
@@ -568,8 +577,8 @@ export default function App() {
         }}
       />
 
-      {/* QUICK WORKSPACE ACCESS STRIP (Shown when user is inside planning/management views) */}
-      {currentView !== 'discover' && (
+      {/* QUICK WORKSPACE ACCESS STRIP (Shown only when user is inside planning/management desks) */}
+      {['planner', 'guests', 'seating', 'shagun', 'photos', 'playlist', 'website', 'ai', 'board', 'vendor-portal', 'admin'].includes(currentView) && (
         <div className="bg-[#FAF3E0] border-b border-[#E8D8A6] px-4 py-2 text-xs">
           <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto gap-4">
             <button
@@ -791,6 +800,65 @@ export default function App() {
             />
 
           </div>
+        )}
+
+        {/* VIEW: DEDICATED VENUES DIRECTORY PAGE */}
+        {currentView === 'venues' && (
+          <WmgVenuesPage
+            selectedCity={selectedCity}
+            setSelectedCity={setSelectedCity}
+            onSelectVendor={(v) => setSelectedVendorForDetail(v)}
+            showToast={showToast}
+          />
+        )}
+
+        {/* VIEW: DEDICATED VENDORS DIRECTORY PAGE */}
+        {currentView === 'vendors' && (
+          <WmgVendorsPage
+            selectedCity={selectedCity}
+            setSelectedCity={setSelectedCity}
+            onSelectVendor={(v) => setSelectedVendorForDetail(v)}
+            showToast={showToast}
+          />
+        )}
+
+        {/* VIEW: DEDICATED INSPIRATION PHOTOS GALLERY PAGE */}
+        {currentView === 'photos-gallery' && (
+          <WmgPhotosPage
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
+            showToast={showToast}
+          />
+        )}
+
+        {/* VIEW: DEDICATED REAL WEDDINGS EXPLORER PAGE */}
+        {currentView === 'real-weddings-page' && (
+          <WmgRealWeddingsPage
+            selectedCity={selectedCity}
+            onSelectVendor={(v) => setSelectedVendorForDetail(v)}
+            showToast={showToast}
+          />
+        )}
+
+        {/* VIEW: DEDICATED WEDDING BLOG & EDITORIAL JOURNAL */}
+        {currentView === 'blog-page' && (
+          <WmgBlogPage
+            showToast={showToast}
+          />
+        )}
+
+        {/* VIEW: DEDICATED E-INVITES & WEDDING CARDS STUDIO */}
+        {currentView === 'e-invites-page' && (
+          <WmgEInvitesPage
+            showToast={showToast}
+          />
+        )}
+
+        {/* VIEW: DEDICATED WEDMEGOOD GENIE CONCIERGE PAGE */}
+        {currentView === 'genie-page' && (
+          <WmgGeniePage
+            showToast={showToast}
+          />
         )}
 
         {/* VIEW 2: WEDDING PLANNER & BUDGET (CONFIDENTIAL TO COUPLE) */}

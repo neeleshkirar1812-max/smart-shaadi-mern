@@ -268,8 +268,10 @@ export default function WmgTopBar({
           {/* Center & Right Navigation Links with Full Mega-Menu */}
           <nav className="hidden lg:flex items-center space-x-1 h-full">
             <button 
-              onClick={() => { setView('discover'); onScrollToSection('popular-venues'); }}
-              className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition"
+              onClick={() => setView('venues')}
+              className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition ${
+                currentView === 'venues' ? 'bg-[#b81857] text-white shadow-inner border-b-2 border-white' : 'hover:bg-[#d11f67]'
+              }`}
             >
               Venues
             </button>
@@ -282,8 +284,10 @@ export default function WmgTopBar({
               onMouseLeave={() => setVendorsMenuOpen(false)}
             >
               <button 
-                onClick={() => setVendorsMenuOpen(!vendorsMenuOpen)}
-                className="h-full px-3.5 flex items-center text-[14px] font-semibold bg-[#d11f67] text-white"
+                onClick={() => setView('vendors')}
+                className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition text-white ${
+                  currentView === 'vendors' ? 'bg-[#b81857] shadow-inner border-b-2 border-white' : 'bg-[#d11f67] hover:bg-[#b81857]'
+                }`}
               >
                 <span>Vendors</span>
               </button>
@@ -295,29 +299,29 @@ export default function WmgTopBar({
                   <div className="space-y-4">
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Photographers</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Photographers</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Photographers</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Makeup</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Bridal Makeup Artists</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] flex items-center py-0.5 text-left w-full">
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Bridal Makeup Artists</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] flex items-center py-0.5 text-left w-full font-medium">
                         Family Makeup <span className="wmg-service-tag">WMG SERVICE</span>
                       </button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Planning &amp; Decor</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Wedding Planners</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Decorators</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Wedding Planners</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Decorators</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Virtual Planning</span>
-                      <button onClick={() => { onOpenGenie ? onOpenGenie() : onScrollToSection('genie-banner'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] flex items-center py-0.5 text-left w-full">
+                      <button onClick={() => { setView('genie-page'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] flex items-center py-0.5 text-left w-full font-medium">
                         Virtual Planning <span className="wmg-service-tag">WMG SERVICE</span>
                       </button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Mehndi</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Mehendi Artists</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Mehendi Artists</button>
                     </div>
                   </div>
 
@@ -325,24 +329,24 @@ export default function WmgTopBar({
                   <div className="space-y-4">
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Music &amp; Dance</span>
-                      <button onClick={() => { setView('playlist'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">DJs</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Sangeet Choreographer</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Wedding Entertainment</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">DJs</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Sangeet Choreographer</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Wedding Entertainment</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Invites &amp; Gifts</span>
-                      <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Invitations</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Favors &amp; Gifting</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Trousseau Packing</button>
-                      <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Invites &amp; Gifts</button>
+                      <button onClick={() => { setView('e-invites-page'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Invitations</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Favors &amp; Gifting</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Trousseau Packing</button>
+                      <button onClick={() => { setView('e-invites-page'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Invites &amp; Gifts</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Food</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Catering Services</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Cake</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Chaat &amp; Food Stalls</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Bartenders</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Food</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Catering Services</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Cake</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Chaat &amp; Food Stalls</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Bartenders</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Food</button>
                     </div>
                   </div>
 
@@ -350,24 +354,24 @@ export default function WmgTopBar({
                   <div className="space-y-4">
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Pre Wedding Shoot</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Pre Wedding Shoot Locations</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Pre Wedding Photographers</button>
+                      <button onClick={() => { setView('photos-gallery'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Pre Wedding Shoot Locations</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Pre Wedding Photographers</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Bridal Wear</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Bridal Lehengas</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Kanjeevaram / Silk Sarees</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Cocktail Gowns</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Trousseau Sarees</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Bridal Lehenga on Rent</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Bridal Wear</button>
+                      <button onClick={() => { setView('photos-gallery'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Bridal Lehengas</button>
+                      <button onClick={() => { setView('photos-gallery'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Kanjeevaram / Silk Sarees</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Cocktail Gowns</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Trousseau Sarees</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Bridal Lehenga on Rent</button>
+                      <button onClick={() => { setView('photos-gallery'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Bridal Wear</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Groom Wear</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Sherwani</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Wedding Suits / Tuxes</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Sherwani On Rent</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Groom Wear</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Sherwani</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Wedding Suits / Tuxes</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Sherwani On Rent</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Groom Wear</button>
                     </div>
                   </div>
 
@@ -375,18 +379,18 @@ export default function WmgTopBar({
                   <div className="space-y-4">
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Jewellery &amp; Accessories</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Jewellery</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Flower Jewellery</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Jewellery On Rent</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Jewellery</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Jewellery</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Flower Jewellery</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Jewellery On Rent</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Jewellery</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Pandits</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Wedding Pandits</button>
+                      <button onClick={() => { setView('vendors'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Wedding Pandits</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Bridal Grooming</span>
-                      <button onClick={() => { onOpenGenie ? onOpenGenie() : onScrollToSection('genie-banner'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Beauty and Wellness</button>
+                      <button onClick={() => { setView('genie-page'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full font-medium">Beauty and Wellness</button>
                     </div>
                   </div>
                 </div>
@@ -394,36 +398,46 @@ export default function WmgTopBar({
             </div>
 
             <button 
-              onClick={() => { setView('discover'); onScrollToSection('photos'); }}
-              className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition"
+              onClick={() => setView('photos-gallery')}
+              className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition ${
+                currentView === 'photos-gallery' ? 'bg-[#b81857] text-white shadow-inner border-b-2 border-white' : 'hover:bg-[#d11f67]'
+              }`}
             >
               Photos
             </button>
 
             <button 
-              onClick={() => { setView('discover'); onScrollToSection('real-weddings'); }}
-              className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition"
+              onClick={() => setView('real-weddings-page')}
+              className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition ${
+                currentView === 'real-weddings-page' ? 'bg-[#b81857] text-white shadow-inner border-b-2 border-white' : 'hover:bg-[#d11f67]'
+              }`}
             >
               Real Weddings
             </button>
 
             <button 
-              onClick={() => { setView('discover'); onScrollToSection('blog'); }}
-              className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition"
+              onClick={() => setView('blog-page')}
+              className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition ${
+                currentView === 'blog-page' ? 'bg-[#b81857] text-white shadow-inner border-b-2 border-white' : 'hover:bg-[#d11f67]'
+              }`}
             >
               Blog
             </button>
 
             <button 
-              onClick={() => setView('website')}
-              className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition"
+              onClick={() => setView('e-invites-page')}
+              className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition ${
+                currentView === 'e-invites-page' ? 'bg-[#b81857] text-white shadow-inner border-b-2 border-white' : 'hover:bg-[#d11f67]'
+              }`}
             >
               E-Invites
             </button>
 
             <button 
-              onClick={() => onOpenGenie ? onOpenGenie() : onScrollToSection('genie-banner')}
-              className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition space-x-1"
+              onClick={() => setView('genie-page')}
+              className={`h-full px-3.5 flex items-center text-[14px] font-semibold transition space-x-1 ${
+                currentView === 'genie-page' ? 'bg-[#b81857] text-white shadow-inner border-b-2 border-white' : 'hover:bg-[#d11f67]'
+              }`}
             >
               <span>Genie</span>
               <span className="bg-white text-[#e72e77] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">NEW</span>
