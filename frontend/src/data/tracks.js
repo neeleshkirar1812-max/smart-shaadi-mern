@@ -1,0 +1,87 @@
+// Sangeet DJ Playlist & Telemetry Data for SmartShaadi
+export const initialTracks = [
+  {
+    id: "tr-1",
+    title: "Gallan Goodiyaan (Live Dhol Mix)",
+    artist: "Yashita Sharma, Manish Kumar Tipu, Shankar Mahadevan",
+    category: "Family Dance Faceoff",
+    bpm: 128,
+    energyScore: 98,
+    upvotes: 42,
+    requestedBy: "Ananya & Kabir",
+    decibelEstimate: "88 dB (Optimal Hype)",
+    duration: "4:56",
+    status: "Playing Now",
+    soundZone: "Amphitheatre Floor"
+  },
+  {
+    id: "tr-2",
+    title: "Kala Chashma (Imperial Remix)",
+    artist: "Amar Arshi, Badshah, Neha Kakkar",
+    category: "Bollywood Dhamaka",
+    bpm: 132,
+    energyScore: 95,
+    upvotes: 38,
+    requestedBy: "Groom's Cousins",
+    decibelEstimate: "90 dB (Peak Safe)",
+    duration: "3:07",
+    status: "Next in Queue",
+    soundZone: "Amphitheatre Floor"
+  },
+  {
+    id: "tr-3",
+    title: "Sauda Khara Khara (Bhangra Extravaganza)",
+    artist: "Diljit Dosanjh, Sukhbir, Dhvani Bhanushali",
+    category: "Punjabi Beats",
+    bpm: 130,
+    energyScore: 94,
+    upvotes: 29,
+    requestedBy: "Col. Vikramjit Singh",
+    decibelEstimate: "89 dB (Safe Zone)",
+    duration: "3:54",
+    status: "Queued",
+    soundZone: "Amphitheatre Floor"
+  },
+  {
+    id: "tr-4",
+    title: "Mast Magan x Kesariya (Royal Acoustic Medley)",
+    artist: "Arijit Singh, Chinmayi Sripada",
+    category: "Couple Slow Waltz",
+    bpm: 85,
+    energyScore: 65,
+    upvotes: 34,
+    requestedBy: "Bride's Clan",
+    decibelEstimate: "74 dB (Ambient Melodic)",
+    duration: "4:15",
+    status: "Queued",
+    soundZone: "Lakeside Deck"
+  },
+  {
+    id: "tr-5",
+    title: "Duma Dum Mast Qalandar (Live Sufi Qawwali)",
+    artist: "Nusrat Fateh Ali Khan & Sabri Brothers Legacy",
+    category: "Sufi & Qawwali Jam",
+    bpm: 110,
+    energyScore: 88,
+    upvotes: 26,
+    requestedBy: "Dr. Farooq Qureshi",
+    decibelEstimate: "82 dB (Safe Zone)",
+    duration: "6:40",
+    status: "Queued",
+    soundZone: "Courtyard Stage"
+  },
+  {
+    id: "tr-6",
+    title: "Didi Tera Devar Deewana (Classic Retro Nostalgia)",
+    artist: "Lata Mangeshkar, S. P. Balasubrahmanyam",
+    category: "Retro Antakshari",
+    bpm: 118,
+    energyScore: 82,
+    upvotes: 21,
+    requestedBy: "Masi & Bua Clan",
+    decibelEstimate: "80 dB (Safe Zone)",
+    duration: "8:05",
+    status: "Queued",
+    soundZone: "Indoor Ballroom"
+  }
+];

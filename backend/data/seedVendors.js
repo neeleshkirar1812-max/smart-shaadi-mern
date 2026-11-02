@@ -1,5 +1,82 @@
 export const seedVendors = [
-  // 1. Hindu / Royal Destination Venue
+  // 1. Premier Palace Listing: The Leela Palace Udaipur
+  {
+    id: "palace-1",
+    name: "The Leela Palace Udaipur",
+    category: "Venue",
+    faith: "All Traditions",
+    city: "Udaipur",
+    price: "₹8,50,000",
+    priceUnit: "day rental",
+    vegPlatePrice: "₹4,800",
+    nonVegPlatePrice: "₹5,800",
+    rating: 4.98,
+    reviewsCount: 312,
+    description: "Nestled on the serene banks of Lake Pichola, The Leela Palace Udaipur exemplifies majestic Mewar architecture, opulent gold filigree decor, and sprawling lakeside courtyards ideal for royal multi-faith nuptials.",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80",
+    imageReel: [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80"
+    ],
+    verified: true,
+    featured: true,
+    approval_status: "approved",
+    banquetSpecs: {
+      indoorSqFt: "14,500 sq.ft (Grand Mewar Ballroom)",
+      outdoorSqFt: "32,000 sq.ft (Lake Pichola Floating Lawns)",
+      minGuests: 150,
+      maxGuests: 1200,
+      floatingLawns: true,
+      parkingCapacity: "250 Valet Bays",
+      roomsCount: "80 Luxury Suites"
+    },
+    faithTags: ["Hindu Mandap", "Muslim Nikah & Walima", "Christian Lawn Vows", "Sikh Reception", "Jain Vivah"],
+    tags: ["Lake View Mandap", "Boat Arrival", "Royal Butler Service", "Mewar Heritage", "Price Shield Guard"],
+    contact: "+91 94140 88990",
+    experience: "20+ Years",
+    eventsDone: 680
+  },
+  // 2. Premier Palace Listing: Umaid Bhawan Palace Jodhpur
+  {
+    id: "palace-2",
+    name: "Umaid Bhawan Palace",
+    category: "Venue",
+    faith: "All Traditions",
+    city: "Jodhpur",
+    price: "₹12,00,000",
+    priceUnit: "day rental",
+    vegPlatePrice: "₹5,500",
+    nonVegPlatePrice: "₹6,800",
+    rating: 5.0,
+    reviewsCount: 420,
+    description: "Perched atop Chittar Hill, one of the world's largest private residences. Art Deco majesty combined with Marwar royal traditions, sprawling Baradari lawns, and subterranean Zodiac pool.",
+    image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80",
+    imageReel: [
+      "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80"
+    ],
+    verified: true,
+    featured: true,
+    approval_status: "approved",
+    banquetSpecs: {
+      indoorSqFt: "18,000 sq.ft (Marwar Durbar Hall)",
+      outdoorSqFt: "45,000 sq.ft (Baradari Royal Lawns)",
+      minGuests: 250,
+      maxGuests: 2000,
+      floatingLawns: false,
+      parkingCapacity: "400 Valet Bays",
+      roomsCount: "64 Palace Suites"
+    },
+    faithTags: ["Hindu Vivah", "Royal Baraat", "Grand Walima", "Sikh Anand Karaj Reception"],
+    tags: ["Historic Palace", "Helipad Access", "Golden Sandstone", "Royal Durbar", "Escrow Guard"],
+    contact: "+91 98290 77112",
+    experience: "35+ Years",
+    eventsDone: 950
+  },
+  // 3. Hindu / Royal Destination Venue
   {
     id: "v1",
     name: "Riwaaz Heritage Haveli & Palace",

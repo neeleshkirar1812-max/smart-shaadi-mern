@@ -60,7 +60,15 @@
 
 .gold-border-glow {
   border: 1px solid #E8D8A6;
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+}
+
+.royal-gold-glow {
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+}
+
+.royal-ruby-gradient {
+  background: linear-gradient(135deg, #6B1D2F 0%, #B60056 100%);
 }
 
 /* Micro animations */
