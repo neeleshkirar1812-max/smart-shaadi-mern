@@ -22,6 +22,9 @@ import WmgCorporateContactDesk from './components/wmg/WmgCorporateContactDesk.js
 import WmgMegaFooter from './components/wmg/WmgMegaFooter.jsx';
 import WmgSearchModal from './components/wmg/WmgSearchModal.jsx';
 import WmgWishlistModal from './components/wmg/WmgWishlistModal.jsx';
+import WmgWriteReviewModal from './components/wmg/WmgWriteReviewModal.jsx';
+import WmgInhouseServicesModal from './components/wmg/WmgInhouseServicesModal.jsx';
+import WmgAppDownloadModal from './components/wmg/WmgAppDownloadModal.jsx';
 
 // Core Vendor Marketplace & Detail Modal
 import VendorMarketplace from './components/VendorMarketplace.jsx';
@@ -81,6 +84,10 @@ export default function App() {
   const [wishlistModalOpen, setWishlistModalOpen] = useState(false);
   const [invoiceModalOpen, setInvoiceModalOpen] = useState(false);
   const [tableStandeeModalOpen, setTableStandeeModalOpen] = useState(false);
+  const [writeReviewModalOpen, setWriteReviewModalOpen] = useState(false);
+  const [inhouseServicesModalOpen, setInhouseServicesModalOpen] = useState(false);
+  const [inhouseServiceType, setInhouseServiceType] = useState('wedsta');
+  const [appDownloadModalOpen, setAppDownloadModalOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
   // Multi-Faith & Vendor Marketplace State
@@ -553,6 +560,12 @@ export default function App() {
         }}
         onLogout={handleLogout}
         onScrollToSection={scrollToSection}
+        onOpenWriteReview={() => setWriteReviewModalOpen(true)}
+        onOpenDownloadApp={() => setAppDownloadModalOpen(true)}
+        onOpenGenie={() => {
+          setInhouseServiceType('genie');
+          setInhouseServicesModalOpen(true);
+        }}
       />
 
       {/* QUICK WORKSPACE ACCESS STRIP (Shown when user is inside planning/management views) */}
@@ -662,7 +675,14 @@ export default function App() {
                 loadVendors();
                 scrollToSection('catalog-marketplace');
               }}
-              onOpenGenie={() => scrollToSection('genie-banner')}
+              onOpenGenie={() => {
+                setInhouseServiceType('genie');
+                setInhouseServicesModalOpen(true);
+              }}
+              onOpenInhouseModal={(type) => {
+                setInhouseServiceType(type);
+                setInhouseServicesModalOpen(true);
+              }}
             />
 
             {/* SECTION 4: WEDMEGOOD GENIE / WEDSTA CONCIERGE BANNER */}
@@ -694,6 +714,7 @@ export default function App() {
               onBookVendor={(v) => setSelectedVendorForDetail(v)}
               onToggleWishlist={handleToggleWishlist}
               wishlist={wishlist}
+              showToast={showToast}
             />
 
             {/* CORE CATALOG MARKETPLACE & FILTERS */}
@@ -726,7 +747,10 @@ export default function App() {
             />
 
             {/* SECTION 10: OFFICIAL WEDMEGOOD MOBILE APP DOWNLOAD BANNER */}
-            <WmgAppDownloadBanner showToast={showToast} />
+            <WmgAppDownloadBanner 
+              showToast={showToast} 
+              onOpenDownloadModal={() => setAppDownloadModalOpen(true)}
+            />
 
             {/* SECTION 11: WMG EDITORIAL & WEDDING JOURNAL */}
             <WmgEditorialJournal />
@@ -1001,6 +1025,34 @@ export default function App() {
         vendors={vendors}
         onSelectVendor={(v) => setSelectedVendorForDetail(v)}
         onOpenGenie={() => scrollToSection('genie-banner')}
+      />
+
+      {/* WMG Write Review Modal */}
+      <WmgWriteReviewModal
+        isOpen={writeReviewModalOpen}
+        onClose={() => setWriteReviewModalOpen(false)}
+        showToast={showToast}
+        user={user}
+      />
+
+      {/* WMG Inhouse Services Modal (Wedsta, Genie, Venue Booking) */}
+      <WmgInhouseServicesModal
+        isOpen={inhouseServicesModalOpen}
+        onClose={() => setInhouseServicesModalOpen(false)}
+        serviceType={inhouseServiceType}
+        showToast={showToast}
+        onSelectCategory={(cat) => {
+          setSelectedCategory(cat);
+          loadVendors();
+          scrollToSection('catalog-marketplace');
+        }}
+      />
+
+      {/* WMG App Download Modal */}
+      <WmgAppDownloadModal
+        isOpen={appDownloadModalOpen}
+        onClose={() => setAppDownloadModalOpen(false)}
+        showToast={showToast}
       />
 
       {/* Toast Notification */}

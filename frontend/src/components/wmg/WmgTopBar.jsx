@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Search } from 'lucide-react';
+import { Heart, Search, Check, MapPin } from 'lucide-react';
 
-export const CITIES_LIST = [
+export const TOP_CITIES_LIST = [
   'All Cities',
   'Delhi NCR',
   'Mumbai',
@@ -12,7 +12,37 @@ export const CITIES_LIST = [
   'Hyderabad',
   'Chennai',
   'Pune',
-  'Kolkata'
+  'Kolkata',
+  'Lucknow'
+];
+
+export const CITIES_LIST = TOP_CITIES_LIST;
+
+export const DESTINATION_CITIES_LIST = [
+  'Udaipur',
+  'Goa',
+  'Jim Corbett',
+  'Jaipur',
+  'Mussoorie',
+  'Kerala',
+  'Jodhpur',
+  'Agra',
+  'Varanasi'
+];
+
+export const OTHER_POPULAR_CITIES = [
+  'Nagpur',
+  'Thane',
+  'Surat',
+  'Patna',
+  'Raipur',
+  'Coimbatore',
+  'Gwalior',
+  'Indore',
+  'Dehradun',
+  'Karnal',
+  'Bhubaneswar',
+  'Faridabad'
 ];
 
 export default function WmgTopBar({
@@ -26,9 +56,13 @@ export default function WmgTopBar({
   user,
   onOpenAuth,
   onLogout,
-  onScrollToSection
+  onScrollToSection,
+  onOpenWriteReview,
+  onOpenDownloadApp,
+  onOpenGenie
 }) {
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
+  const [citySearchQuery, setCitySearchQuery] = useState('');
   const [vendorsMenuOpen, setVendorsMenuOpen] = useState(false);
   const cityRef = useRef(null);
   const vendorsRef = useRef(null);
@@ -49,14 +83,21 @@ export default function WmgTopBar({
   const handleSelectCity = (c) => {
     setSelectedCity(c === 'All Cities' ? 'All cities' : c);
     setCityDropdownOpen(false);
+    setCitySearchQuery('');
   };
 
   const currentDisplayCity = selectedCity === 'All cities' ? 'All Cities' : selectedCity;
 
+  // Filtered cities based on search
+  const allKnownCities = Array.from(new Set([...TOP_CITIES_LIST, ...DESTINATION_CITIES_LIST, ...OTHER_POPULAR_CITIES]));
+  const filteredCities = citySearchQuery.trim()
+    ? allKnownCities.filter((c) => c.toLowerCase().includes(citySearchQuery.toLowerCase()))
+    : TOP_CITIES_LIST;
+
   return (
     <>
       {/* 1. TOP UTILITY HEADER BAR */}
-      <div className="bg-white border-b border-[#f0f0f0] text-[12px] py-1.5 px-4 hidden md:block">
+      <div className="bg-white border-b border-[#f0f0f0] text-[12px] py-1.5 px-4 hidden md:block font-sans">
         <div className="wmg-container flex items-center justify-between text-[#727272]">
           <div className="flex items-center space-x-1">
             <span className="text-[#e72e77] text-[13px] font-bold">♥</span>
@@ -64,25 +105,22 @@ export default function WmgTopBar({
           </div>
           <div className="flex items-center space-x-6 font-medium">
             <button 
-              onClick={() => {
-                if (!user) onOpenAuth('couple');
-                else onScrollToSection('real-weddings');
-              }}
-              className="hover:text-[#e72e77] flex items-center space-x-1"
+              onClick={() => onOpenWriteReview ? onOpenWriteReview() : onOpenAuth?.('couple')}
+              className="hover:text-[#e72e77] flex items-center space-x-1 transition"
             >
               <span className="material-symbols-outlined text-[15px] text-[#e72e77]">edit_note</span>
               <span>Write A Review</span>
             </button>
             <button 
-              onClick={() => onScrollToSection('app-download')}
-              className="hover:text-[#e72e77] flex items-center space-x-1"
+              onClick={() => onOpenDownloadApp ? onOpenDownloadApp() : onScrollToSection?.('app-download')}
+              className="hover:text-[#e72e77] flex items-center space-x-1 transition"
             >
               <span className="material-symbols-outlined text-[15px] text-[#e72e77]">install_mobile</span>
               <span>Download App</span>
             </button>
             <button 
-              onClick={() => onOpenAuth('vendor')}
-              className="hover:text-[#e72e77] flex items-center space-x-1"
+              onClick={() => onOpenAuth?.('vendor')}
+              className="hover:text-[#e72e77] flex items-center space-x-1 transition"
             >
               <span className="material-symbols-outlined text-[15px]">storefront</span>
               <span>Register as a Vendor</span>
@@ -92,7 +130,7 @@ export default function WmgTopBar({
       </div>
 
       {/* 2. PRIMARY LOGO & NAVIGATION HEADER */}
-      <header className="sticky top-0 z-50 bg-[#e72e77] text-white shadow-md">
+      <header className="sticky top-0 z-50 bg-[#e72e77] text-white shadow-md font-sans">
         <div className="wmg-container flex items-center justify-between h-[64px]">
           
           {/* Left: Logo & City Selector */}
@@ -112,7 +150,7 @@ export default function WmgTopBar({
             <div className="relative" ref={cityRef}>
               <button 
                 onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
-                className="bg-[#d11f67] hover:bg-[#b81857] text-white text-[13px] font-semibold py-1.5 px-3.5 rounded-full flex items-center space-x-1.5 transition"
+                className="bg-[#d11f67] hover:bg-[#b81857] text-white text-[13px] font-semibold py-1.5 px-3.5 rounded-full flex items-center space-x-1.5 transition shadow-xs"
               >
                 <span className="material-symbols-outlined text-[16px]">location_on</span>
                 <span id="active-city-label">{currentDisplayCity}</span>
@@ -120,17 +158,86 @@ export default function WmgTopBar({
               </button>
 
               {cityDropdownOpen && (
-                <div className="absolute left-0 mt-1 w-64 bg-white text-[#4a4a4a] rounded-lg shadow-dropdown py-2 border border-[#eee] z-50">
-                  <div className="px-3 py-1.5 text-[11px] font-bold text-[#888] uppercase tracking-wider">Top Destinations</div>
-                  {CITIES_LIST.map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => handleSelectCity(c)}
-                      className="w-full text-left block px-3 py-2 text-[13px] hover:bg-pink-50 hover:text-[#e72e77] font-medium"
-                    >
-                      {c}
-                    </button>
-                  ))}
+                <div className="absolute left-0 mt-2 w-72 bg-white text-[#4a4a4a] rounded-xl shadow-dropdown py-3 border border-[#eee] z-50 animate-in fade-in max-h-[460px] overflow-y-auto">
+                  
+                  {/* City Search Input */}
+                  <div className="px-3 pb-2 border-b border-gray-100">
+                    <div className="flex items-center bg-[#f8f8f8] rounded-lg px-2.5 py-1.5 border border-gray-200">
+                      <Search className="w-3.5 h-3.5 text-gray-400 mr-2" />
+                      <input
+                        type="text"
+                        placeholder="Search city..."
+                        value={citySearchQuery}
+                        onChange={(e) => setCitySearchQuery(e.target.value)}
+                        className="bg-transparent text-xs outline-none w-full text-gray-800"
+                        autoFocus
+                      />
+                    </div>
+                  </div>
+
+                  {citySearchQuery.trim() ? (
+                    <div className="py-1">
+                      <div className="px-3 py-1 text-[11px] font-bold text-[#888] uppercase tracking-wider">
+                        Search Results
+                      </div>
+                      {filteredCities.length > 0 ? (
+                        filteredCities.map((c) => (
+                          <button
+                            key={c}
+                            onClick={() => handleSelectCity(c)}
+                            className={`w-full text-left px-3.5 py-2 text-[13px] flex items-center justify-between font-medium hover:bg-pink-50 hover:text-[#e72e77] transition ${
+                              currentDisplayCity === c ? 'bg-pink-50 text-[#e72e77] font-bold' : ''
+                            }`}
+                          >
+                            <span>{c}</span>
+                            {currentDisplayCity === c && <Check className="w-3.5 h-3.5 text-[#e72e77]" />}
+                          </button>
+                        ))
+                      ) : (
+                        <p className="px-3.5 py-2 text-xs text-gray-400">No matching cities found</p>
+                      )}
+                    </div>
+                  ) : (
+                    <>
+                      {/* Top Hubs */}
+                      <div className="py-1">
+                        <div className="px-3.5 py-1 text-[11px] font-bold text-[#888] uppercase tracking-wider">
+                          Top Hubs
+                        </div>
+                        {TOP_CITIES_LIST.map((c) => (
+                          <button
+                            key={c}
+                            onClick={() => handleSelectCity(c)}
+                            className={`w-full text-left px-3.5 py-2 text-[13px] flex items-center justify-between font-medium hover:bg-pink-50 hover:text-[#e72e77] transition ${
+                              currentDisplayCity === c ? 'bg-pink-50 text-[#e72e77] font-bold' : ''
+                            }`}
+                          >
+                            <span>{c}</span>
+                            {currentDisplayCity === c && <Check className="w-3.5 h-3.5 text-[#e72e77]" />}
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Destination Wedding Hubs */}
+                      <div className="py-1 border-t border-gray-100">
+                        <div className="px-3.5 py-1 text-[11px] font-bold text-[#b38600] uppercase tracking-wider">
+                          Destination Weddings
+                        </div>
+                        {DESTINATION_CITIES_LIST.slice(0, 5).map((c) => (
+                          <button
+                            key={c}
+                            onClick={() => handleSelectCity(c)}
+                            className={`w-full text-left px-3.5 py-1.5 text-[12px] flex items-center justify-between font-medium hover:bg-amber-50 hover:text-[#b38600] transition ${
+                              currentDisplayCity === c ? 'bg-amber-50 text-[#b38600] font-bold' : ''
+                            }`}
+                          >
+                            <span>🏰 {c}</span>
+                            {currentDisplayCity === c && <Check className="w-3.5 h-3.5 text-[#b38600]" />}
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -159,7 +266,7 @@ export default function WmgTopBar({
                 <span>Vendors</span>
               </button>
 
-              {/* MEGA MENU OVERLAY (4 COLUMNS - EXACT VERBATIM AS IN SCREENSHOT) */}
+              {/* MEGA MENU OVERLAY (4 COLUMNS) */}
               {vendorsMenuOpen && (
                 <div className="absolute left-[-200px] top-[64px] w-[980px] bg-white text-[#2c2c2c] shadow-dropdown border-t border-[#f0f0f0] rounded-b-lg p-6 grid grid-cols-4 gap-6 z-50 text-[13px] text-left">
                   {/* Col 1 */}
@@ -182,8 +289,8 @@ export default function WmgTopBar({
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Virtual Planning</span>
-                      <button onClick={() => { onScrollToSection('genie-banner'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] flex items-center py-0.5 text-left w-full">
-                        Virtual planning <span className="wmg-service-tag">WMG SERVICE</span>
+                      <button onClick={() => { onOpenGenie ? onOpenGenie() : onScrollToSection('genie-banner'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] flex items-center py-0.5 text-left w-full">
+                        Virtual Planning <span className="wmg-service-tag">WMG SERVICE</span>
                       </button>
                     </div>
                     <div>
@@ -197,16 +304,14 @@ export default function WmgTopBar({
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Music &amp; Dance</span>
                       <button onClick={() => { setView('playlist'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">DJs</button>
-                      <button onClick={() => { setView('playlist'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Sangeet Choreographer</button>
-                      <button onClick={() => { setView('playlist'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Wedding Entertainment</button>
+                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Sangeet Choreographer</button>
+                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Wedding Entertainment</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Invites &amp; Gifts</span>
                       <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Invitations</button>
-                      <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Favors</button>
-                      <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Trousseau Packers</button>
-                      <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Invitation Gifts</button>
-                      <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Mehndi Favors</button>
+                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Favors &amp; Gifting</button>
+                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Trousseau Packing</button>
                       <button onClick={() => { setView('website'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Invites &amp; Gifts</button>
                     </div>
                     <div>
@@ -250,9 +355,8 @@ export default function WmgTopBar({
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Jewellery &amp; Accessories</span>
                       <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Jewellery</button>
                       <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Flower Jewellery</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Bridal Jewellery on Rent</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Accessories</button>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Jewellery &amp; Accessories</button>
+                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Jewellery On Rent</button>
+                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#e72e77] font-bold block pt-1 hover:underline text-[12px] text-left w-full">View All Jewellery</button>
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Pandits</span>
@@ -260,7 +364,7 @@ export default function WmgTopBar({
                     </div>
                     <div>
                       <span className="font-bold text-[#e72e77] text-[14px] block mb-1">Bridal Grooming</span>
-                      <button onClick={() => { setView('discover'); onScrollToSection('catalog-marketplace'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Beauty and Wellness</button>
+                      <button onClick={() => { onOpenGenie ? onOpenGenie() : onScrollToSection('genie-banner'); setVendorsMenuOpen(false); }} className="text-[#555] hover:text-[#e72e77] block py-0.5 text-left w-full">Beauty and Wellness</button>
                     </div>
                   </div>
                 </div>
@@ -268,7 +372,7 @@ export default function WmgTopBar({
             </div>
 
             <button 
-              onClick={() => { setView('discover'); onScrollToSection('inspiration-gallery'); }}
+              onClick={() => { setView('discover'); onScrollToSection('photos'); }}
               className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition"
             >
               Photos
@@ -296,7 +400,7 @@ export default function WmgTopBar({
             </button>
 
             <button 
-              onClick={() => onScrollToSection('genie-banner')}
+              onClick={() => onOpenGenie ? onOpenGenie() : onScrollToSection('genie-banner')}
               className="h-full px-3.5 flex items-center text-[14px] font-semibold hover:bg-[#d11f67] transition space-x-1"
             >
               <span>Genie</span>

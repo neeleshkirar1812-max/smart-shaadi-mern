@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function WmgAppDownloadBanner({ showToast }) {
+export default function WmgAppDownloadBanner({ showToast, onOpenDownloadModal }) {
   const [phone, setPhone] = useState('');
   const [sent, setSent] = useState(false);
 
@@ -64,11 +64,9 @@ export default function WmgAppDownloadBanner({ showToast }) {
 
           {/* Badges */}
           <div className="flex items-center space-x-4">
-            <a 
-              className="inline-block border border-gray-600 rounded-lg p-1.5 hover:border-white transition" 
-              href="https://apps.apple.com"
-              target="_blank" 
-              rel="noreferrer"
+            <button 
+              onClick={() => onOpenDownloadModal ? onOpenDownloadModal() : window.open('https://apps.apple.com', '_blank')}
+              className="inline-block border border-gray-600 rounded-lg p-1.5 hover:border-white transition"
             >
               <div className="flex items-center space-x-2 px-2">
                 <span className="text-xl"></span>
@@ -77,12 +75,10 @@ export default function WmgAppDownloadBanner({ showToast }) {
                   <div className="text-[12px] font-bold">App Store</div>
                 </div>
               </div>
-            </a>
-            <a 
-              className="inline-block border border-gray-600 rounded-lg p-1.5 hover:border-white transition" 
-              href="https://play.google.com"
-              target="_blank" 
-              rel="noreferrer"
+            </button>
+            <button 
+              onClick={() => onOpenDownloadModal ? onOpenDownloadModal() : window.open('https://play.google.com', '_blank')}
+              className="inline-block border border-gray-600 rounded-lg p-1.5 hover:border-white transition"
             >
               <div className="flex items-center space-x-2 px-2">
                 <span className="text-xl">▶</span>
@@ -91,13 +87,17 @@ export default function WmgAppDownloadBanner({ showToast }) {
                   <div className="text-[12px] font-bold">Google Play</div>
                 </div>
               </div>
-            </a>
+            </button>
           </div>
         </div>
 
         {/* Smartphone Mockup Graphic Right */}
-        <div className="w-full md:w-[320px] flex justify-center">
-          <div className="relative w-64 h-[440px] bg-black border-4 border-gray-800 rounded-[36px] shadow-2xl p-2.5 flex flex-col items-center overflow-hidden">
+        <div 
+          onClick={() => onOpenDownloadModal && onOpenDownloadModal()}
+          className="w-full md:w-[320px] flex justify-center cursor-pointer group"
+          title="Click to view QR Scanner"
+        >
+          <div className="relative w-64 h-[440px] bg-black border-4 border-gray-800 group-hover:border-[#e72e77] rounded-[36px] shadow-2xl p-2.5 flex flex-col items-center overflow-hidden transition duration-300">
             {/* Screen */}
             <div className="w-full h-full bg-[#fcf9f8] rounded-[26px] overflow-hidden flex flex-col">
               <div className="bg-[#e72e77] p-3 text-white text-center font-bold text-[13px]">
@@ -106,7 +106,7 @@ export default function WmgAppDownloadBanner({ showToast }) {
               <div className="p-3 space-y-2 flex-1 overflow-hidden">
                 <div className="h-28 rounded-lg overflow-hidden relative">
                   <img 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
                     src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80" 
                     alt="WedMeGood App"
                   />
@@ -119,6 +119,9 @@ export default function WmgAppDownloadBanner({ showToast }) {
                   <div className="bg-white p-2 rounded shadow-sm border border-gray-100">Photographers</div>
                   <div className="bg-white p-2 rounded shadow-sm border border-gray-100">Bridal Wear</div>
                   <div className="bg-white p-2 rounded shadow-sm border border-gray-100">Genie (Free)</div>
+                </div>
+                <div className="bg-pink-50 p-2 rounded text-[10px] text-[#e72e77] text-center font-bold">
+                  Tap to Scan App QR 📲
                 </div>
               </div>
             </div>

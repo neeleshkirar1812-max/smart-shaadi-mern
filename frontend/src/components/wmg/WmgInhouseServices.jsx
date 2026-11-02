@@ -1,6 +1,16 @@
 import React from 'react';
 
-export default function WmgInhouseServices({ onSelectService, onOpenGenie }) {
+export default function WmgInhouseServices({ onSelectService, onOpenGenie, onOpenInhouseModal }) {
+  const handleOpen = (type) => {
+    if (onOpenInhouseModal) {
+      onOpenInhouseModal(type);
+    } else if (type === 'venue') {
+      onSelectService?.('Venue');
+    } else {
+      onOpenGenie?.(type);
+    }
+  };
+
   return (
     <section className="py-10 bg-[#faf8f6] border-b border-[#f0f0f0] font-sans">
       <div className="wmg-container">
@@ -14,10 +24,10 @@ export default function WmgInhouseServices({ onSelectService, onOpenGenie }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Wedsta */}
           <div 
-            onClick={() => onOpenGenie?.('Wedsta')} 
-            className="bg-white border border-[#ffe0ea] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer"
+            onClick={() => handleOpen('wedsta')} 
+            className="bg-white border border-[#ffe0ea] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer group"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-pink-50 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-pink-50 rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-125 transition"></div>
             <span className="bg-[#e72e77] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase inline-block mb-3">
               WMG SERVICE
             </span>
@@ -33,10 +43,10 @@ export default function WmgInhouseServices({ onSelectService, onOpenGenie }) {
 
           {/* Genie Services */}
           <div 
-            onClick={() => onOpenGenie?.('Genie')} 
-            className="bg-white border border-[#d6ecff] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer"
+            onClick={() => handleOpen('genie')} 
+            className="bg-white border border-[#d6ecff] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer group"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-125 transition"></div>
             <span className="bg-[#0070ba] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase inline-block mb-3">
               WMG SERVICE
             </span>
@@ -52,10 +62,10 @@ export default function WmgInhouseServices({ onSelectService, onOpenGenie }) {
 
           {/* Venue Booking Service */}
           <div 
-            onClick={() => onSelectService?.('Venue')} 
-            className="bg-white border border-[#fff2ce] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer"
+            onClick={() => handleOpen('venue')} 
+            className="bg-white border border-[#fff2ce] rounded-xl p-5 shadow-sm hover:shadow-md transition relative overflow-hidden cursor-pointer group"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-50 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-50 rounded-full -mr-8 -mt-8 pointer-events-none group-hover:scale-125 transition"></div>
             <span className="bg-[#b38600] text-white text-[10px] font-bold px-2 py-0.5 rounded tracking-wider uppercase inline-block mb-3">
               WMG SERVICE
             </span>

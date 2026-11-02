@@ -43,7 +43,7 @@ export default function VendorDetailModal({ vendor, onClose, onSubmitInquiry, us
   const nonVegRateNum = vendor.nonVegPlatePrice ? parseInt(vendor.nonVegPlatePrice.replace(/[^0-9]/g, '')) || 5800 : 5800;
   const plateRate = cateringPlan === 'both' ? nonVegRateNum : vegRateNum;
   const cateringSubtotal = plateRate * guestCount;
-  const venueRentNum = parseInt(vendor.price.replace(/[^0-9]/g, '')) || 850000;
+  const venueRentNum = parseInt(String(vendor.price || vendor.pricingDisplay || '850000').replace(/[^0-9]/g, '')) || 850000;
   const totalEstimatedCost = venueRentNum + (vendor.category === 'Venue' ? cateringSubtotal : 0);
 
   const handleSubmit = async (e) => {
